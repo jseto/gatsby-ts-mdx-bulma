@@ -1,6 +1,6 @@
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-
+import { useStaticQuery, graphql, Link } from "gatsby"
+import { MDXProvider } from "@mdx-js/react"
 import Header from "./header"
 import "./layout.css"
 
@@ -16,7 +16,11 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <MDXProvider
+      components={{
+        a: props => props.href.indexOf('http') >= 0? <a {...props }/> : <Link to={ props.href } {...props}/>
+      }}
+    >
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
@@ -32,7 +36,7 @@ const Layout = ({ children }) => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </>
+    </MDXProvider>
   )
 }
 

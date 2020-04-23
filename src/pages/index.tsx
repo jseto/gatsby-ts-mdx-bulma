@@ -6,6 +6,7 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 import { PageBlock } from "../components/page-block"
 import { IndexQuery } from "../../graphql-types"
+import { MainCategoryEntries } from "../grids/main-category-entries"
 
 interface IndexPageProps {
   data: IndexQuery;
@@ -20,6 +21,8 @@ const IndexPage = (props: IndexPageProps ) => {
 	    <SEO title={ title } description={ description } />
 
       <PageBlock blockCollection={ blocks } blockName="main" />
+
+      <MainCategoryEntries />
     </Layout>
   )
 }
@@ -38,6 +41,7 @@ query Index {
     nodes {
       body
       id
+      excerpt
 			frontmatter {
 				blockName
 				className

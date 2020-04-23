@@ -2,7 +2,17 @@ import * as React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title }) {
+
+interface SEOProps {
+	title: string;
+  description?: string;
+  featuredImage?: string;
+	lang?: string;
+	meta?: any[];
+}
+
+
+const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, featuredImage }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -40,12 +50,20 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
         {
+          property: `og:images`,
+          content: featuredImage && `${ site.siteMetadata.siteUrl }${ featuredImage }`,
+        },
+        {
+          property: `og:image`,
+          content: featuredImage && `${ site.siteMetadata.siteUrl }${ featuredImage }`,
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
         },
         {
           name: `twitter:creator`,
@@ -58,6 +76,10 @@ function SEO({ description, lang, meta, title }) {
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: `twitter:image`,
+          content: featuredImage && `${ site.siteMetadata.siteUrl }${ featuredImage }`,
         },
       ].concat(meta)}
     />

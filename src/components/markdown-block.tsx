@@ -3,17 +3,17 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 interface MarkdownBlockProps {
 	className?: string;
-	content: string;
+	children: string;
 }
 
 export const MarkdownBlock: React.FC<MarkdownBlockProps> = ({
 	className,
-	content,
+	children,
 }) => {
 
 	return (
 		<div className={`markdown-block ${ className? className : '' }`}>
-		  <MDXRenderer>{ content }</MDXRenderer>
+		  <MDXRenderer>{ children }</MDXRenderer>
 		</div>
 	);
 };

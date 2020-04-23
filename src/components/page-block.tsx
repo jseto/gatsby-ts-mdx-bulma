@@ -18,11 +18,9 @@ export class PageBlock extends Component< PageBlockProps > {
 		const block = blockCollection.find( block => block.frontmatter.blockName === blockName )
 		
 		return (
-			<MarkdownBlock
-				className={`block ${ block.frontmatter.className }`}
-				key={ block.id }
-				content={ block.body }
-			/>
+			<MarkdownBlock className={`block ${ block.frontmatter.className }`}	key={ block.id }>
+				{ block.body }
+			</MarkdownBlock>
 		)
 	}
 }

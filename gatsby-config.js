@@ -10,15 +10,16 @@ module.exports = {
 		'gatsby-plugin-sass',
 		`gatsby-plugin-sharp`,
 		`gatsby-transformer-sharp`,
-		'gatsby-plugin-catch-links',
+    'gatsby-plugin-catch-links',
+    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.md', '.mdx'],
         // defaultLayouts: {
-        //   default: require.resolve('./src/components/layout.ts'),
+        //   default: require.resolve('./src/pages/page.tsx'),
         // },
-        plugins: [
+        gatsbyRemarkPlugins: [
 					'gatsby-remark-numbered-footnotes',
 					{
              resolve: `gatsby-remark-autolink-headers`,
@@ -54,12 +55,6 @@ module.exports = {
 				path: `${__dirname}/src/posts`,
 			}
 		},
-    {
-      resolve: "gatsby-plugin-page-creator",
-      options: {
-        path: `${__dirname}/src/posts`,
-      },
-    },
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {

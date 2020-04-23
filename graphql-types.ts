@@ -699,6 +699,7 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___blockOrder' |
   'childMdx___frontmatter___className' |
   'childMdx___frontmatter___description' |
+  'childMdx___frontmatter___category' |
   'childMdx___body' |
   'childMdx___excerpt' |
   'childMdx___headings' |
@@ -711,6 +712,8 @@ export type FileFieldsEnum =
   'childMdx___wordCount___paragraphs' |
   'childMdx___wordCount___sentences' |
   'childMdx___wordCount___words' |
+  'childMdx___fields___slug' |
+  'childMdx___fields___featuredImage' |
   'childMdx___id' |
   'childMdx___parent___id' |
   'childMdx___parent___parent___id' |
@@ -1378,6 +1381,7 @@ export type Mdx = Node & {
   tableOfContents?: Maybe<Scalars['JSON']>;
   timeToRead?: Maybe<Scalars['Int']>;
   wordCount?: Maybe<MdxWordCount>;
+  fields?: Maybe<MdxFields>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -1427,6 +1431,11 @@ export type MdxEdge = {
   previous?: Maybe<Mdx>;
 };
 
+export type MdxFields = {
+  slug?: Maybe<Scalars['String']>;
+  featuredImage?: Maybe<Scalars['String']>;
+};
+
 export type MdxFieldsEnum = 
   'rawBody' |
   'fileAbsolutePath' |
@@ -1436,6 +1445,7 @@ export type MdxFieldsEnum =
   'frontmatter___blockOrder' |
   'frontmatter___className' |
   'frontmatter___description' |
+  'frontmatter___category' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1448,6 +1458,8 @@ export type MdxFieldsEnum =
   'wordCount___paragraphs' |
   'wordCount___sentences' |
   'wordCount___words' |
+  'fields___slug' |
+  'fields___featuredImage' |
   'id' |
   'parent___id' |
   'parent___parent___id' |
@@ -1535,6 +1547,11 @@ export type MdxFieldsEnum =
   'internal___owner' |
   'internal___type';
 
+export type MdxFieldsFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>;
+  featuredImage?: Maybe<StringQueryOperatorInput>;
+};
+
 export type MdxFilterInput = {
   rawBody?: Maybe<StringQueryOperatorInput>;
   fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
@@ -1547,6 +1564,7 @@ export type MdxFilterInput = {
   tableOfContents?: Maybe<JsonQueryOperatorInput>;
   timeToRead?: Maybe<IntQueryOperatorInput>;
   wordCount?: Maybe<MdxWordCountFilterInput>;
+  fields?: Maybe<MdxFieldsFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -1560,6 +1578,7 @@ export type MdxFrontmatter = {
   blockOrder?: Maybe<Scalars['Int']>;
   className?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
+  category?: Maybe<Scalars['String']>;
 };
 
 export type MdxFrontmatterFilterInput = {
@@ -1569,6 +1588,7 @@ export type MdxFrontmatterFilterInput = {
   blockOrder?: Maybe<IntQueryOperatorInput>;
   className?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
+  category?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MdxGroupConnection = {
@@ -1791,6 +1811,7 @@ export type QuerySitePageArgs = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -1861,6 +1882,7 @@ export type QueryMdxArgs = {
   tableOfContents?: Maybe<JsonQueryOperatorInput>;
   timeToRead?: Maybe<IntQueryOperatorInput>;
   wordCount?: Maybe<MdxWordCountFilterInput>;
+  fields?: Maybe<MdxFieldsFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -2248,6 +2270,7 @@ export type SitePage = Node & {
   children: Array<Node>;
   internal: Internal;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
+  context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
   componentPath?: Maybe<Scalars['String']>;
@@ -2272,6 +2295,14 @@ export type SitePageConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
   field: SitePageFieldsEnum;
+};
+
+export type SitePageContext = {
+  id?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -2373,6 +2404,7 @@ export type SitePageFieldsEnum =
   'internal___owner' |
   'internal___type' |
   'isCreatedByStatefulCreatePages' |
+  'context___id' |
   'pluginCreator___id' |
   'pluginCreator___parent___id' |
   'pluginCreator___parent___parent___id' |
@@ -2414,17 +2446,7 @@ export type SitePageFieldsEnum =
   'pluginCreator___resolve' |
   'pluginCreator___name' |
   'pluginCreator___version' |
-  'pluginCreator___pluginOptions___plugins' |
-  'pluginCreator___pluginOptions___plugins___resolve' |
-  'pluginCreator___pluginOptions___plugins___id' |
-  'pluginCreator___pluginOptions___plugins___name' |
-  'pluginCreator___pluginOptions___plugins___version' |
-  'pluginCreator___pluginOptions___plugins___browserAPIs' |
-  'pluginCreator___pluginOptions___plugins___ssrAPIs' |
-  'pluginCreator___pluginOptions___plugins___pluginFilepath' |
   'pluginCreator___pluginOptions___extensions' |
-  'pluginCreator___pluginOptions___removeAccents' |
-  'pluginCreator___pluginOptions___maxWidth' |
   'pluginCreator___pluginOptions___name' |
   'pluginCreator___pluginOptions___path' |
   'pluginCreator___pluginOptions___trackingIds' |
@@ -2435,6 +2457,7 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___background_color' |
   'pluginCreator___pluginOptions___theme_color' |
   'pluginCreator___pluginOptions___display' |
+  'pluginCreator___pluginOptions___icon' |
   'pluginCreator___pluginOptions___develop' |
   'pluginCreator___pluginOptions___purgeOnly' |
   'pluginCreator___pluginOptions___pathCheck' |
@@ -2471,6 +2494,7 @@ export type SitePageFilterInput = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -2623,20 +2647,7 @@ export type SitePluginFieldsEnum =
   'resolve' |
   'name' |
   'version' |
-  'pluginOptions___plugins' |
-  'pluginOptions___plugins___resolve' |
-  'pluginOptions___plugins___id' |
-  'pluginOptions___plugins___name' |
-  'pluginOptions___plugins___version' |
-  'pluginOptions___plugins___pluginOptions___icon' |
-  'pluginOptions___plugins___pluginOptions___removeAccents' |
-  'pluginOptions___plugins___pluginOptions___maxWidth' |
-  'pluginOptions___plugins___browserAPIs' |
-  'pluginOptions___plugins___ssrAPIs' |
-  'pluginOptions___plugins___pluginFilepath' |
   'pluginOptions___extensions' |
-  'pluginOptions___removeAccents' |
-  'pluginOptions___maxWidth' |
   'pluginOptions___name' |
   'pluginOptions___path' |
   'pluginOptions___trackingIds' |
@@ -2647,6 +2658,7 @@ export type SitePluginFieldsEnum =
   'pluginOptions___background_color' |
   'pluginOptions___theme_color' |
   'pluginOptions___display' |
+  'pluginOptions___icon' |
   'pluginOptions___develop' |
   'pluginOptions___purgeOnly' |
   'pluginOptions___pathCheck' |
@@ -2762,10 +2774,7 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 };
 
 export type SitePluginPluginOptions = {
-  plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>;
   extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
-  removeAccents?: Maybe<Scalars['Boolean']>;
-  maxWidth?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
   trackingIds?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -2776,16 +2785,14 @@ export type SitePluginPluginOptions = {
   background_color?: Maybe<Scalars['String']>;
   theme_color?: Maybe<Scalars['String']>;
   display?: Maybe<Scalars['String']>;
+  icon?: Maybe<Scalars['String']>;
   develop?: Maybe<Scalars['Boolean']>;
   purgeOnly?: Maybe<Array<Maybe<Scalars['String']>>>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
 export type SitePluginPluginOptionsFilterInput = {
-  plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>;
   extensions?: Maybe<StringQueryOperatorInput>;
-  removeAccents?: Maybe<BooleanQueryOperatorInput>;
-  maxWidth?: Maybe<IntQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   trackingIds?: Maybe<StringQueryOperatorInput>;
@@ -2796,6 +2803,7 @@ export type SitePluginPluginOptionsFilterInput = {
   background_color?: Maybe<StringQueryOperatorInput>;
   theme_color?: Maybe<StringQueryOperatorInput>;
   display?: Maybe<StringQueryOperatorInput>;
+  icon?: Maybe<StringQueryOperatorInput>;
   develop?: Maybe<BooleanQueryOperatorInput>;
   purgeOnly?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
@@ -2815,44 +2823,6 @@ export type SitePluginPluginOptionsPluginConfig = {
 
 export type SitePluginPluginOptionsPluginConfigFilterInput = {
   head?: Maybe<BooleanQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPlugins = {
-  resolve?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  version?: Maybe<Scalars['String']>;
-  pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptions>;
-  browserAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
-  ssrAPIs?: Maybe<Array<Maybe<Scalars['String']>>>;
-  pluginFilepath?: Maybe<Scalars['String']>;
-};
-
-export type SitePluginPluginOptionsPluginsFilterInput = {
-  resolve?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  version?: Maybe<StringQueryOperatorInput>;
-  pluginOptions?: Maybe<SitePluginPluginOptionsPluginsPluginOptionsFilterInput>;
-  browserAPIs?: Maybe<StringQueryOperatorInput>;
-  ssrAPIs?: Maybe<StringQueryOperatorInput>;
-  pluginFilepath?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePluginPluginOptionsPluginsFilterListInput = {
-  elemMatch?: Maybe<SitePluginPluginOptionsPluginsFilterInput>;
-};
-
-export type SitePluginPluginOptionsPluginsPluginOptions = {
-  icon?: Maybe<Scalars['Boolean']>;
-  removeAccents?: Maybe<Scalars['Boolean']>;
-  maxWidth?: Maybe<Scalars['Int']>;
-};
-
-export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
-  icon?: Maybe<BooleanQueryOperatorInput>;
-  removeAccents?: Maybe<BooleanQueryOperatorInput>;
-  maxWidth?: Maybe<IntQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {
@@ -2890,6 +2860,14 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
+export type EntryCardQueryVariables = {};
+
+
+export type EntryCardQuery = { allFile: { nodes: Array<(
+      Pick<File, 'relativePath'>
+      & { childImageSharp?: Maybe<{ fixed?: Maybe<GatsbyImageSharpFixedFragment> }> }
+    )> } };
+
 export type Unnamed_1_QueryVariables = {};
 
 
@@ -2905,13 +2883,31 @@ export type Unnamed_2_QueryVariables = {};
 
 export type Unnamed_2_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
+export type MainCategoryEntriesQueryVariables = {};
+
+
+export type MainCategoryEntriesQuery = { allMdx: { nodes: Array<(
+      Pick<Mdx, 'id' | 'excerpt'>
+      & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'page' | 'description' | 'className' | 'blockOrder' | 'blockName' | 'category'>>, fields?: Maybe<Pick<MdxFields, 'slug' | 'featuredImage'>>, headings?: Maybe<Array<Maybe<Pick<MdxHeadingMdx, 'value'>>>> }
+    )> } };
+
 export type IndexQueryVariables = {};
 
 
 export type IndexQuery = { mdx?: Maybe<{ frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'description'>> }>, allMdx: { nodes: Array<(
-      Pick<Mdx, 'body' | 'id'>
+      Pick<Mdx, 'body' | 'id' | 'excerpt'>
       & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'blockName' | 'className'>> }
     )> } };
+
+export type PageQueryVariables = {
+  id?: Maybe<Scalars['String']>;
+};
+
+
+export type PageQuery = { mdx?: Maybe<(
+    Pick<Mdx, 'id' | 'body' | 'excerpt'>
+    & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'description' | 'className'>> }
+  )> };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
