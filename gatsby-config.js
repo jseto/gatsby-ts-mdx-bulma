@@ -101,7 +101,7 @@ module.exports = {
       options: {
 				develop: false,
         whitelist: [],
-        purgeOnly: ['/all.sass'], // applies purging only on the bulma css file
+        purgeOnly: ['/style.scss'], // applies purging only on the bulma css file
       },
     }, // must be after other CSS plugins
     // this (optional) plugin enables Progressive Web App + Offline functionality
