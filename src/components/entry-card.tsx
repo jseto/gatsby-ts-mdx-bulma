@@ -17,13 +17,15 @@ export const EntryCard = ({ key, heading, excerpt, slug, imagePath }: EntryCardP
 			( data: EntryCardQuery ) => {
 				const image = data.allFile.nodes.find( item => imagePath.includes( item.relativePath ) )
 				return (
-					<Link className="no-decorators" key={key} to={ slug }>
+					<Link className="no-decorators entry-card" key={key} to={ slug }>
 						<h2>{ heading }</h2>
-						<Img fixed={ image.childImageSharp.fixed } />
+						<div className="image-container">
+							<Img fixed={ image.childImageSharp.fixed } />
+						</div>
 						<p>
 							{ excerpt }
 						</p>
-						<Link to={ slug }>Read More...</Link>
+						<Link className="read-more" to={ slug }>Leer más...</Link>
 					</Link>								
 				)
 			}
