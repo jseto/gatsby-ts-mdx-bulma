@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Cultivo Microgreen en Español`,
-    description: `Cultivo Microgreen en Español`,
-    author: `@microgreen_es`,
-    siteUrl: 'https://microgreen.netlify.app',
+    title: `Site Title`,
+    description: `Site description`,
+    author: `@my_author`,
+    siteUrl: 'https://mysite.netlify.app',
     lang: 'en'
   },
   plugins: [

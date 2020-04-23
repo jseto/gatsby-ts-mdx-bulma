@@ -83,5 +83,5 @@ const findFeaturedImage = ( content ) => {
 
   const start = content.indexOf( '(', imgTagStart ) + 1
   const end = content.indexOf( ')', start )
-  return content.slice( start, end )
+  return path.basename( content.slice( start, end ) )
 }
