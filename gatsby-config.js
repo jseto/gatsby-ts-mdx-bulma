@@ -3,6 +3,8 @@ module.exports = {
     title: `Cultivo Microgreen en Español`,
     description: `Cultivo Microgreen en Español`,
     author: `@microgreen_es`,
+    siteUrl: 'https://microgreen.netlify.app',
+    lang: 'en'
   },
   plugins: [
 		`gatsby-plugin-ts`,
@@ -61,15 +63,15 @@ module.exports = {
         // You can add multiple tracking ids and a pageview event will be fired for all of them.
         trackingIds: [
           'UA-000000000-1', // Google Analytics / GA
-					'AW-000000000', // Google Ads / Adwords / AW
+					'AW-000000000', // Google Ads / Adwords / AW                  cSpell: disable-line
 					'G-XX0XXX0XX0',
-          // "DC-FLOODIGHT_ID", // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
+          // "DC-FLOODIGHT_ID", // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)                  cSpell: disable-line
         ],
         // This object gets passed directly to the gtag config command
         // This config will be shared across all trackingIds
         gtagConfig: {
           // optimize_id: "OPT_CONTAINER_ID",
-          anonymize_ip: false,
+          anonymize_ip: false,                  // cSpell: disable-line
           // cookie_expires: 0,
         },
         // This object is used for configuration specific to this plugin
@@ -101,7 +103,7 @@ module.exports = {
       options: {
 				develop: false,
         whitelist: [],
-        purgeOnly: ['/style.scss'], // applies purging only on the bulma css file
+        purgeOnly: ['/style.scss'], // applies purging only on the bulma css file                  cSpell: disable-line
       },
     }, // must be after other CSS plugins
     // this (optional) plugin enables Progressive Web App + Offline functionality

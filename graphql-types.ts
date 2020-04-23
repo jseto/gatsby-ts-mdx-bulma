@@ -1829,8 +1829,6 @@ export type QueryAllSitePageArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -1942,8 +1940,6 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
-  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -2146,8 +2142,8 @@ export type SiteFieldsEnum =
   'siteMetadata___title' |
   'siteMetadata___description' |
   'siteMetadata___author' |
-  'port' |
-  'host' |
+  'siteMetadata___siteUrl' |
+  'siteMetadata___lang' |
   'polyfill' |
   'pathPrefix' |
   'id' |
@@ -2240,8 +2236,6 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2834,12 +2828,16 @@ export type SiteSiteMetadata = {
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   author?: Maybe<Scalars['String']>;
+  siteUrl?: Maybe<Scalars['String']>;
+  lang?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<StringQueryOperatorInput>;
+  siteUrl?: Maybe<StringQueryOperatorInput>;
+  lang?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSortInput = {
@@ -2878,10 +2876,10 @@ export type SiteTitleQueryQueryVariables = {};
 
 export type SiteTitleQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
-export type Unnamed_2_QueryVariables = {};
+export type SiteQueryVariables = {};
 
 
-export type Unnamed_2_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+export type SiteQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'lang' | 'siteUrl'>> }> };
 
 export type MainCategoryEntriesQueryVariables = {};
 

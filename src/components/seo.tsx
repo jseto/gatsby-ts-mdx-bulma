@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { SiteQuery } from "../../graphql-types"
 
 
 interface SEOProps {
@@ -15,24 +16,26 @@ interface SEOProps {
 const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, featuredImage }) => {
   const { site } = useStaticQuery(
     graphql`
-      query {
+      query Site {
         site {
           siteMetadata {
             title
             description
             author
+            lang
+            siteUrl
           }
         }
       }
     `
-  )
+  ) as SiteQuery
 
   const metaDescription = description || site.siteMetadata.description
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang: lang || site.siteMetadata.lang || 'en'
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
@@ -51,11 +54,11 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, featuredImage
         },
         {
           property: `og:images`,
-          content: featuredImage && `${ site.siteMetadata.siteUrl }${ featuredImage }`,
+          content: featuredImage && `${ site.siteMetadata.siteUrl || '' }${ featuredImage }`,
         },
         {
           property: `og:image`,
-          content: featuredImage && `${ site.siteMetadata.siteUrl }${ featuredImage }`,
+          content: featuredImage && `${ site.siteMetadata.siteUrl || '' }${ featuredImage }`,
         },
         {
           property: `og:type`,
@@ -79,7 +82,7 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, featuredImage
         },
         {
           name: `twitter:image`,
-          content: featuredImage && `${ site.siteMetadata.siteUrl }${ featuredImage }`,
+          content: featuredImage && `${ site.siteMetadata.siteUrl || '' }${ featuredImage }`,
         },
       ].concat(meta)}
     />
@@ -87,7 +90,7 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, featuredImage
 }
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: ``,
   meta: [],
   description: ``,
 }
