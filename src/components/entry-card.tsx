@@ -15,12 +15,14 @@ export const EntryCard = ({ key, heading, excerpt, slug, imagePath }: EntryCardP
 	<StaticQuery
 		render={
 			( data: EntryCardQuery ) => {
-				const image = data.allFile.nodes.find( item => imagePath.includes( item.relativePath ) )
+				const image = data.allImageSharp.nodes.find( item => imagePath.includes( item.fixed.originalName ) )
 				return (
 					<Link className="no-decorators entry-card" key={key} to={ slug }>
 						<h2>{ heading }</h2>
 						<div className="image-container">
-							<Img fixed={ image.childImageSharp.fixed } />
+							{ image &&
+								<Img fixed={ image.fixed } />
+							}
 						</div>
 						<p>
 							{ excerpt }
@@ -33,13 +35,11 @@ export const EntryCard = ({ key, heading, excerpt, slug, imagePath }: EntryCardP
 		query={
 			graphql`
 			query EntryCard {
-				allFile {
+				allImageSharp {
 					nodes {
-						relativePath
-						childImageSharp {
-							fixed(width: 150, height: 150 ) {
-								...GatsbyImageSharpFixed
-							}
+						fixed(width: 150, height: 150 ) {
+							originalName
+							...GatsbyImageSharpFixed
 						}
 					}
 				}

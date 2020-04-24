@@ -44,7 +44,7 @@ export const MainCategoryEntries = ( props: any ) => (
 							item => (
 								<EntryCard
 									key={ item.id}
-									heading={ item.headings[0].value }
+									heading={ item.frontmatter.title }
 									excerpt={ item.excerpt }
 									imagePath={ item.fields.featuredImage }
 									slug={ item.fields.slug }

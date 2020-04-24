@@ -75,7 +75,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 }
 
-
 const findFeaturedImage = ( content ) => {
   const imgTagStart = content.indexOf( '![' )
   

@@ -698,8 +698,8 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___blockName' |
   'childMdx___frontmatter___blockOrder' |
   'childMdx___frontmatter___className' |
-  'childMdx___frontmatter___description' |
   'childMdx___frontmatter___category' |
+  'childMdx___frontmatter___description' |
   'childMdx___body' |
   'childMdx___excerpt' |
   'childMdx___headings' |
@@ -1444,8 +1444,8 @@ export type MdxFieldsEnum =
   'frontmatter___blockName' |
   'frontmatter___blockOrder' |
   'frontmatter___className' |
-  'frontmatter___description' |
   'frontmatter___category' |
+  'frontmatter___description' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1577,8 +1577,8 @@ export type MdxFrontmatter = {
   blockName?: Maybe<Scalars['String']>;
   blockOrder?: Maybe<Scalars['Int']>;
   className?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
   category?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
 };
 
 export type MdxFrontmatterFilterInput = {
@@ -1587,8 +1587,8 @@ export type MdxFrontmatterFilterInput = {
   blockName?: Maybe<StringQueryOperatorInput>;
   blockOrder?: Maybe<IntQueryOperatorInput>;
   className?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
   category?: Maybe<StringQueryOperatorInput>;
+  description?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MdxGroupConnection = {
@@ -2869,15 +2869,10 @@ export type StringQueryOperatorInput = {
 export type EntryCardQueryVariables = {};
 
 
-export type EntryCardQuery = { allFile: { nodes: Array<(
-      Pick<File, 'relativePath'>
-      & { childImageSharp?: Maybe<{ fixed?: Maybe<GatsbyImageSharpFixedFragment> }> }
-    )> } };
-
-export type Unnamed_1_QueryVariables = {};
-
-
-export type Unnamed_1_Query = { placeholderImage?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> };
+export type EntryCardQuery = { allImageSharp: { nodes: Array<{ fixed?: Maybe<(
+        Pick<ImageSharpFixed, 'originalName'>
+        & GatsbyImageSharpFixedFragment
+      )> }> } };
 
 export type SiteTitleQueryQueryVariables = {};
 
@@ -2895,14 +2890,6 @@ export type MainCategoryEntriesQueryVariables = {};
 export type MainCategoryEntriesQuery = { allMdx: { nodes: Array<(
       Pick<Mdx, 'id' | 'excerpt'>
       & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'page' | 'description' | 'className' | 'blockOrder' | 'blockName' | 'category'>>, fields?: Maybe<Pick<MdxFields, 'slug' | 'featuredImage'>>, headings?: Maybe<Array<Maybe<Pick<MdxHeadingMdx, 'value'>>>> }
-    )> } };
-
-export type IndexQueryVariables = {};
-
-
-export type IndexQuery = { mdx?: Maybe<{ frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'description'>> }>, allMdx: { nodes: Array<(
-      Pick<Mdx, 'body' | 'id' | 'excerpt'>
-      & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'blockName' | 'className'>> }
     )> } };
 
 export type PageQueryVariables = {
