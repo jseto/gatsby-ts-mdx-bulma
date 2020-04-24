@@ -1,15 +1,20 @@
 import * as React from 'react'
 import { ReactNode } from 'react'
-import { MdxHeadingMdx, Mdx } from '../../graphql-types'
+import { MdxHeadingMdx, Mdx, MdxFrontmatter, MdxFields } from '../../graphql-types'
+
+type EntryGridItem = (Pick<Mdx, "id" | "excerpt"> & {
+	frontmatter?: Pick<MdxFrontmatter, "title" | "page" | "description" | "className" | "blockOrder" | "blockName" | "category">;
+	fields?: Pick<MdxFields, "slug" | "featuredImage">;
+})
 
 export interface EntryGridProps {
-  items: Mdx[];
-	className: string;
+	items: EntryGridItem[];
+	className?: string;
 	compact: boolean;
-	children: ( item: Mdx ) => ReactNode;
+	children: ( item: EntryGridItem ) => ReactNode;
 }
 
-export class EntryGrid<T> extends React.Component<EntryGridProps> {
+export class EntryGrid extends React.Component<EntryGridProps> {
 
 	render() {
 		const { compact, className } = this.props
@@ -28,6 +33,7 @@ export class EntryGrid<T> extends React.Component<EntryGridProps> {
 
 	private renderSpareGrid() {
 		const { items, children } = this.props
+
 		return items.map( item => (
       <div key={ item.id } className="column is-one-third">
 				{ children( item ) }

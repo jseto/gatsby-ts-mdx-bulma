@@ -1829,8 +1829,6 @@ export type QueryAllSitePageArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -1942,8 +1940,6 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
-  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -2148,8 +2144,6 @@ export type SiteFieldsEnum =
   'siteMetadata___author' |
   'siteMetadata___siteUrl' |
   'siteMetadata___lang' |
-  'port' |
-  'host' |
   'polyfill' |
   'pathPrefix' |
   'id' |
@@ -2242,8 +2236,6 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2866,6 +2858,14 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
+export type CategoryEntriesQueryVariables = {};
+
+
+export type CategoryEntriesQuery = { allMdx: { nodes: Array<(
+      Pick<Mdx, 'id' | 'excerpt'>
+      & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'page' | 'description' | 'className' | 'blockOrder' | 'blockName' | 'category'>>, fields?: Maybe<Pick<MdxFields, 'slug' | 'featuredImage'>> }
+    )> } };
+
 export type EntryCardQueryVariables = {};
 
 
@@ -2883,14 +2883,6 @@ export type SiteQueryVariables = {};
 
 
 export type SiteQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'lang' | 'siteUrl'>> }> };
-
-export type MainCategoryEntriesQueryVariables = {};
-
-
-export type MainCategoryEntriesQuery = { allMdx: { nodes: Array<(
-      Pick<Mdx, 'id' | 'excerpt'>
-      & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'page' | 'description' | 'className' | 'blockOrder' | 'blockName' | 'category'>>, fields?: Maybe<Pick<MdxFields, 'slug' | 'featuredImage'>>, headings?: Maybe<Array<Maybe<Pick<MdxHeadingMdx, 'value'>>>> }
-    )> } };
 
 export type PageQueryVariables = {
   id?: Maybe<Scalars['String']>;

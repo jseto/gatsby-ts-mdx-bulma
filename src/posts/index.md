@@ -25,6 +25,6 @@ Si se **cultivan en el interior**, rendirán todo el año cuando se les cuide. L
 En un esfuerzo por proveer a cada hogar con productos de fácil acceso, puedes cultivar una amplia gama de microverduras en tu propia cocina con un aparato de Cultivador Urbano. Con luz autorregulada, agua y controles de humedad, es tan simple como siempre.
 
 
-import {MainCategoryEntries} from "../grids/main-category-entries"
+import {CategoryEntries} from "../components/category-entries"
 
-<MainCategoryEntries/>
+<CategoryEntries category="main"/>
