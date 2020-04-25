@@ -4,31 +4,32 @@ import Img from 'gatsby-image'
 import { EntryCardQuery } from "../../graphql-types"
 
 interface EntryCardProps {
-	key: string;
 	heading: string;
 	excerpt: string;
 	slug: string;
 	imagePath: string;
 }
 
-export const EntryCard = ({ key, heading, excerpt, slug, imagePath }: EntryCardProps) => (
+export const EntryCard = ({ heading, excerpt, slug, imagePath }: EntryCardProps) => (
 	<StaticQuery
 		render={
 			( data: EntryCardQuery ) => {
 				const image = data.allImageSharp.nodes.find( item => imagePath.includes( item.fixed.originalName ) )
 				return (
-					<Link className="no-decorators entry-card" key={key} to={ slug }>
-						<h2>{ heading }</h2>
-						<div className="image-container">
-							{ image &&
-								<Img fixed={ image.fixed } />
-							}
-						</div>
-						<p>
-							{ excerpt }
-						</p>
+					<div className="entry-card">
+						<Link className="no-decorators" to={ slug }>
+							<h2>{ heading }</h2>
+							<div className="image-container">
+								{ image &&
+									<Img fixed={ image.fixed } />
+								}
+							</div>
+							<p>
+								{ excerpt }
+							</p>
+						</Link>
 						<Link className="read-more" to={ slug }>Leer más...</Link>
-					</Link>								
+					</div>
 				)
 			}
 		}

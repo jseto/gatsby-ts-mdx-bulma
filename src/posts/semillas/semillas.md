@@ -1,7 +1,7 @@
 ---
 page: post
 blockName: main
-blockOrder: 1
+order: 1
 className: index-main
 title: Semillas para cultivo Microgreen 
 # description: Semillas para cultivo Microgreen.

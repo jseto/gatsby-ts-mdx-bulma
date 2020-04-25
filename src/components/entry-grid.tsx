@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { ReactNode } from 'react'
-import { MdxHeadingMdx, Mdx, MdxFrontmatter, MdxFields } from '../../graphql-types'
+import { Mdx, MdxFrontmatter, MdxFields } from '../../graphql-types'
 
 type EntryGridItem = (Pick<Mdx, "id" | "excerpt"> & {
-	frontmatter?: Pick<MdxFrontmatter, "title" | "page" | "description" | "className" | "blockOrder" | "blockName" | "category">;
+	frontmatter?: Pick<MdxFrontmatter, "title" | "page" | "description" | "className" | "order" | "blockName" | "category">;
 	fields?: Pick<MdxFields, "slug" | "featuredImage">;
 })
 
@@ -43,36 +43,20 @@ export class EntryGrid extends React.Component<EntryGridProps> {
 
 	private renderCompactGrid() {
 		const { items, children } = this.props
-		const childrenElement = items.map( item => children( item ) )
+		const childrenElement = items.map( item => ({ id: item.id, elem: children( item ) }) )
 
 		return (
 		  <>
 				<div className="column is-one-third">
-					{ childrenElement.filter( ( _item, i ) => i % 3 === 0 ) }
+					{ childrenElement.filter( ( _item, i ) => i % 3 === 0 ).map( elem => <div key={elem.id}>{elem.elem}</div> ) }
 				</div>
 				<div className="column is-one-third">
-					{ childrenElement.filter( ( _item, i ) => i % 3 === 1 ) }
+					{ childrenElement.filter( ( _item, i ) => i % 3 === 1 ).map( elem => <div key={elem.id}>{elem.elem}</div> ) }
 				</div>
 				<div className="column is-one-third">
-					{ childrenElement.filter( ( _item, i ) => i % 3 === 2 ) }
+					{ childrenElement.filter( ( _item, i ) => i % 3 === 2 ).map( elem => <div key={elem.id}>{elem.elem}</div> ) }
 				</div>
 		  </>
 		)
-	}
-}
-
-
-export const findFeaturedImage = ( mdxAST: {} ) => {
-	if ( mdxAST['type'] === 'image' ) {
-		return mdxAST['url']
-	}
-	else {
-		var result = null
-		mdxAST['children']?.forEach( item => {
-			if ( !result ) {
-				result = findFeaturedImage( item ) 
-			}
-		})
-		return result
 	}
 }

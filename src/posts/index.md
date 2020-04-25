@@ -1,7 +1,7 @@
 ---
 page: index
 blockName: main
-blockOrder: 1
+order: 1
 className: index-main
 title: Cultiva tu suministro diario de vegetales. 
 description: Cultivo Microgreen en Español. Produce tu suministro diario de vegetales. 
@@ -24,7 +24,5 @@ Si se **cultivan en el interior**, rendirán todo el año cuando se les cuide. L
 
 En un esfuerzo por proveer a cada hogar con productos de fácil acceso, puedes cultivar una amplia gama de microverduras en tu propia cocina con un aparato de Cultivador Urbano. Con luz autorregulada, agua y controles de humedad, es tan simple como siempre.
 
-
-import {CategoryEntries} from "../components/category-entries"
 
 <CategoryEntries category="main"/>

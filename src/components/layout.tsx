@@ -4,6 +4,7 @@ import { MDXProvider } from "@mdx-js/react"
 import Header from "./header"
 import "../styles/style.scss"
 import CookieConsent from 'react-cookie-consent'
+import { CategoryEntries } from "./category-entries"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -19,7 +20,8 @@ const Layout = ({ children }) => {
   return (
     <MDXProvider
       components={{
-        a: props => props.href.indexOf('http') >= 0? <a {...props }/> : <Link to={ props.href } {...props}/>
+        a: props => props.href.indexOf('http') >= 0? <a {...props }/> : <Link to={ props.href } {...props}/>,
+        CategoryEntries
       }}
     >
       <Header siteTitle={data.site.siteMetadata.title} />
@@ -30,13 +32,11 @@ const Layout = ({ children }) => {
           </div>
         </div>
       </section>
-
       <CookieConsent 
         acceptOnScroll={true}
       >
         We use cookies to ensure that we give you the best experience on our website. If you continue to use this site we will assume that you are happy with it.
       </CookieConsent>
-
     </MDXProvider>
   )
 }

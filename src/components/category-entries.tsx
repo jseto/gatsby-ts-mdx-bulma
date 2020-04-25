@@ -13,14 +13,14 @@ export const CategoryEntries = ( props: CategoryEntriesProps ) => (
 	<StaticQuery
 		query={graphql`
 			query CategoryEntries {
-				allMdx(sort: {fields: frontmatter___blockOrder, order: DESC}) {
+				allMdx(sort: {fields: frontmatter___order, order: DESC}) {
 					nodes {
 						frontmatter {
 							title
 							page
 							description
 							className
-							blockOrder
+							order
 							blockName
 							category
 						}
@@ -47,7 +47,6 @@ export const CategoryEntries = ( props: CategoryEntriesProps ) => (
 							{
 								item => (
 									<EntryCard
-										key={ item.id}
 										heading={ item.frontmatter.title }
 										excerpt={ item.excerpt }
 										imagePath={ item.fields.featuredImage }
