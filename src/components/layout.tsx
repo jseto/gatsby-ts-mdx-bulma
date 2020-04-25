@@ -20,7 +20,6 @@ const Layout = ({ children }) => {
   return (
     <MDXProvider
       components={{
-        a: props => props.href.indexOf('http') >= 0? <a {...props }/> : <Link to={ props.href } {...props}/>,
         CategoryEntries
       }}
     >
