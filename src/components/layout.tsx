@@ -1,10 +1,10 @@
 import * as React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
-import Header from "./header"
 import "../styles/style.scss"
 import CookieConsent from 'react-cookie-consent'
 import { CategoryEntries } from "./category-entries"
+import Navbar from "./navbar"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
         CategoryEntries
       }}
     >
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Navbar/>
       <section className="section">
         <div className="container">
           <div className="content">

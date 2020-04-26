@@ -2148,6 +2148,13 @@ export type SiteFieldsEnum =
   'siteMetadata___author' |
   'siteMetadata___siteUrl' |
   'siteMetadata___lang' |
+  'siteMetadata___navbar___logo___file' |
+  'siteMetadata___navbar___logo___width' |
+  'siteMetadata___navbar___logo___alt' |
+  'siteMetadata___navbar___className' |
+  'siteMetadata___navbar___menuItems' |
+  'siteMetadata___navbar___menuItems___content' |
+  'siteMetadata___navbar___menuItems___href' |
   'port' |
   'host' |
   'polyfill' |
@@ -2838,6 +2845,7 @@ export type SiteSiteMetadata = {
   author?: Maybe<Scalars['String']>;
   siteUrl?: Maybe<Scalars['String']>;
   lang?: Maybe<Scalars['String']>;
+  navbar?: Maybe<SiteSiteMetadataNavbar>;
 };
 
 export type SiteSiteMetadataFilterInput = {
@@ -2846,6 +2854,45 @@ export type SiteSiteMetadataFilterInput = {
   author?: Maybe<StringQueryOperatorInput>;
   siteUrl?: Maybe<StringQueryOperatorInput>;
   lang?: Maybe<StringQueryOperatorInput>;
+  navbar?: Maybe<SiteSiteMetadataNavbarFilterInput>;
+};
+
+export type SiteSiteMetadataNavbar = {
+  logo?: Maybe<SiteSiteMetadataNavbarLogo>;
+  className?: Maybe<Scalars['String']>;
+  menuItems?: Maybe<Array<Maybe<SiteSiteMetadataNavbarMenuItems>>>;
+};
+
+export type SiteSiteMetadataNavbarFilterInput = {
+  logo?: Maybe<SiteSiteMetadataNavbarLogoFilterInput>;
+  className?: Maybe<StringQueryOperatorInput>;
+  menuItems?: Maybe<SiteSiteMetadataNavbarMenuItemsFilterListInput>;
+};
+
+export type SiteSiteMetadataNavbarLogo = {
+  file?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+};
+
+export type SiteSiteMetadataNavbarLogoFilterInput = {
+  file?: Maybe<StringQueryOperatorInput>;
+  width?: Maybe<StringQueryOperatorInput>;
+  alt?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SiteSiteMetadataNavbarMenuItems = {
+  content?: Maybe<Scalars['String']>;
+  href?: Maybe<Scalars['String']>;
+};
+
+export type SiteSiteMetadataNavbarMenuItemsFilterInput = {
+  content?: Maybe<StringQueryOperatorInput>;
+  href?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SiteSiteMetadataNavbarMenuItemsFilterListInput = {
+  elemMatch?: Maybe<SiteSiteMetadataNavbarMenuItemsFilterInput>;
 };
 
 export type SiteSortInput = {
@@ -2886,6 +2933,14 @@ export type SiteTitleQueryQueryVariables = {};
 
 
 export type SiteTitleQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+
+export type SiteMenuQueryVariables = {};
+
+
+export type SiteMenuQuery = { site?: Maybe<{ siteMetadata?: Maybe<{ navbar?: Maybe<(
+        Pick<SiteSiteMetadataNavbar, 'className'>
+        & { logo?: Maybe<Pick<SiteSiteMetadataNavbarLogo, 'file' | 'alt' | 'width'>>, menuItems?: Maybe<Array<Maybe<Pick<SiteSiteMetadataNavbarMenuItems, 'content' | 'href'>>>> }
+      )> }> }> };
 
 export type SiteQueryVariables = {};
 

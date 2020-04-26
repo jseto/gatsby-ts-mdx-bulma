@@ -4,6 +4,20 @@ module.exports = {
     description: `Site description`,
     author: `@my_author`,
     siteUrl: 'https://mysite.netlify.app',
+    lang: 'en',
+    navbar: {
+      logo: {
+        file: '/images/gatsby-logo.png',         // should be in static folder
+        width: '88px',
+        alt: 'Site Logo'
+      },
+      className: 'navbar-style',
+      menuItems: [
+        { content: 'Home', href: '/' },
+        { content: 'Page 2', href: '/page-2' },
+        { content: 'Gatsby', href: 'https://www.gatsbyjs.org/' },
+      ]
+    },
     lang: 'en'
   },
   plugins: [
