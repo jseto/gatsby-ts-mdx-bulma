@@ -2,10 +2,6 @@ import * as React from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
 import { SiteMenuQuery } from '../../graphql-types';
 
-const navbarEndIcon = '';
-const navbarEndIconAlt = '';
-const navbarEndIconUrl = '';
-
 interface NavbarState {
 	active: boolean;
 	navBarActiveClass: string;
@@ -72,13 +68,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
 										className={`navbar-menu ${this.state.navBarActiveClass}`}
 									>
 										<div className="navbar-start has-text-centered">
-											{
-												navbar.menuItems.map( menuItem =>
-													menuItem.href.indexOf('http') >= 0
-														? <a className="navbar-item" key={ menuItem.href } href={ menuItem.href }>{ menuItem.content }</a>
-														: <Link className="navbar-item" key={ menuItem.href } to={ menuItem.href }>{ menuItem.content }</Link>
-												)
-											}
+											<ShowMenuItems items={ navbar.menuItems }/>
 										</div>
 									</div>
 								</div>
@@ -112,3 +102,19 @@ export class Navbar extends React.Component<{}, NavbarState> {
 }
 
 export default Navbar;
+
+
+interface ShowMenuItem {
+	content: string;
+	href: string;
+}
+
+export const ShowMenuItems = ({ items }) => {
+	return (
+		items.map( ( menuItem: ShowMenuItem ) =>
+			menuItem.href.indexOf('http') >= 0
+			? <a className="navbar-item" key={ menuItem.href } href={ menuItem.href }>{ menuItem.content }</a>
+			: <Link className="navbar-item" key={ menuItem.href } to={ menuItem.href }>{ menuItem.content }</Link>
+		)
+	)
+}

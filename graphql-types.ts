@@ -2155,6 +2155,21 @@ export type SiteFieldsEnum =
   'siteMetadata___navbar___menuItems' |
   'siteMetadata___navbar___menuItems___content' |
   'siteMetadata___navbar___menuItems___href' |
+  'siteMetadata___footer___logo___file' |
+  'siteMetadata___footer___logo___width' |
+  'siteMetadata___footer___logo___alt' |
+  'siteMetadata___footer___className' |
+  'siteMetadata___footer___firstColumnItems' |
+  'siteMetadata___footer___firstColumnItems___content' |
+  'siteMetadata___footer___firstColumnItems___href' |
+  'siteMetadata___footer___secondColumnItems' |
+  'siteMetadata___footer___secondColumnItems___content' |
+  'siteMetadata___footer___secondColumnItems___href' |
+  'siteMetadata___footer___social___facebook' |
+  'siteMetadata___footer___social___twitter' |
+  'siteMetadata___footer___social___instagram' |
+  'siteMetadata___footer___social___email' |
+  'siteMetadata___footer___madeWithLove' |
   'port' |
   'host' |
   'polyfill' |
@@ -2846,6 +2861,7 @@ export type SiteSiteMetadata = {
   siteUrl?: Maybe<Scalars['String']>;
   lang?: Maybe<Scalars['String']>;
   navbar?: Maybe<SiteSiteMetadataNavbar>;
+  footer?: Maybe<SiteSiteMetadataFooter>;
 };
 
 export type SiteSiteMetadataFilterInput = {
@@ -2855,6 +2871,79 @@ export type SiteSiteMetadataFilterInput = {
   siteUrl?: Maybe<StringQueryOperatorInput>;
   lang?: Maybe<StringQueryOperatorInput>;
   navbar?: Maybe<SiteSiteMetadataNavbarFilterInput>;
+  footer?: Maybe<SiteSiteMetadataFooterFilterInput>;
+};
+
+export type SiteSiteMetadataFooter = {
+  logo?: Maybe<SiteSiteMetadataFooterLogo>;
+  className?: Maybe<Scalars['String']>;
+  firstColumnItems?: Maybe<Array<Maybe<SiteSiteMetadataFooterFirstColumnItems>>>;
+  secondColumnItems?: Maybe<Array<Maybe<SiteSiteMetadataFooterSecondColumnItems>>>;
+  social?: Maybe<SiteSiteMetadataFooterSocial>;
+  madeWithLove?: Maybe<Scalars['String']>;
+};
+
+export type SiteSiteMetadataFooterFilterInput = {
+  logo?: Maybe<SiteSiteMetadataFooterLogoFilterInput>;
+  className?: Maybe<StringQueryOperatorInput>;
+  firstColumnItems?: Maybe<SiteSiteMetadataFooterFirstColumnItemsFilterListInput>;
+  secondColumnItems?: Maybe<SiteSiteMetadataFooterSecondColumnItemsFilterListInput>;
+  social?: Maybe<SiteSiteMetadataFooterSocialFilterInput>;
+  madeWithLove?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SiteSiteMetadataFooterFirstColumnItems = {
+  content?: Maybe<Scalars['String']>;
+  href?: Maybe<Scalars['String']>;
+};
+
+export type SiteSiteMetadataFooterFirstColumnItemsFilterInput = {
+  content?: Maybe<StringQueryOperatorInput>;
+  href?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SiteSiteMetadataFooterFirstColumnItemsFilterListInput = {
+  elemMatch?: Maybe<SiteSiteMetadataFooterFirstColumnItemsFilterInput>;
+};
+
+export type SiteSiteMetadataFooterLogo = {
+  file?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['String']>;
+  alt?: Maybe<Scalars['String']>;
+};
+
+export type SiteSiteMetadataFooterLogoFilterInput = {
+  file?: Maybe<StringQueryOperatorInput>;
+  width?: Maybe<StringQueryOperatorInput>;
+  alt?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SiteSiteMetadataFooterSecondColumnItems = {
+  content?: Maybe<Scalars['String']>;
+  href?: Maybe<Scalars['String']>;
+};
+
+export type SiteSiteMetadataFooterSecondColumnItemsFilterInput = {
+  content?: Maybe<StringQueryOperatorInput>;
+  href?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SiteSiteMetadataFooterSecondColumnItemsFilterListInput = {
+  elemMatch?: Maybe<SiteSiteMetadataFooterSecondColumnItemsFilterInput>;
+};
+
+export type SiteSiteMetadataFooterSocial = {
+  facebook?: Maybe<Scalars['String']>;
+  twitter?: Maybe<Scalars['String']>;
+  instagram?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
+};
+
+export type SiteSiteMetadataFooterSocialFilterInput = {
+  facebook?: Maybe<StringQueryOperatorInput>;
+  twitter?: Maybe<StringQueryOperatorInput>;
+  instagram?: Maybe<StringQueryOperatorInput>;
+  email?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSiteMetadataNavbar = {
@@ -2928,6 +3017,14 @@ export type EntryCardQuery = { allImageSharp: { nodes: Array<{ fixed?: Maybe<(
         Pick<ImageSharpFixed, 'originalName'>
         & GatsbyImageSharpFixedFragment
       )> }> } };
+
+export type SiteFooterQueryVariables = {};
+
+
+export type SiteFooterQuery = { site?: Maybe<{ siteMetadata?: Maybe<{ footer?: Maybe<(
+        Pick<SiteSiteMetadataFooter, 'className' | 'madeWithLove'>
+        & { logo?: Maybe<Pick<SiteSiteMetadataFooterLogo, 'file' | 'width' | 'alt'>>, firstColumnItems?: Maybe<Array<Maybe<Pick<SiteSiteMetadataFooterFirstColumnItems, 'content' | 'href'>>>>, secondColumnItems?: Maybe<Array<Maybe<Pick<SiteSiteMetadataFooterSecondColumnItems, 'content' | 'href'>>>>, social?: Maybe<Pick<SiteSiteMetadataFooterSocial, 'facebook' | 'twitter' | 'instagram' | 'email'>> }
+      )> }> }> };
 
 export type SiteTitleQueryQueryVariables = {};
 

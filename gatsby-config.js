@@ -18,7 +18,28 @@ module.exports = {
         { content: 'Gatsby', href: 'https://www.gatsbyjs.org/' },
       ]
     },
-    lang: 'en'
+    footer: {
+      logo: {
+        file: '/images/gatsby-logo.png',         // should be in static folder
+        width: '5em',
+        alt: 'Logo'
+      },
+      className: 'footer-style',
+      firstColumnItems: [
+        { content: 'Home', href: '/' },
+      ],
+      secondColumnItems: [
+        { content: 'Privacy Policy', href: '/legal/privacy-policy/' },
+        { content: 'Terms and Conditions', href: '/legal/terms-conditions/' },
+      ],
+      social: {
+        facebook: 'fakeSocialURL',
+        twitter: 'fakeSocialURL',
+        instagram: 'fakeSocialURL',
+        email: 'fakeSocialURL'
+      },
+      madeWithLove: 'Made width ❤️ in Barcelona and Bangkok',
+    }
   },
   plugins: [
 		`gatsby-plugin-ts`,
