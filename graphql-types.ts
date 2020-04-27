@@ -3026,6 +3026,14 @@ export type SiteFooterQuery = { site?: Maybe<{ siteMetadata?: Maybe<{ footer?: M
         & { logo?: Maybe<Pick<SiteSiteMetadataFooterLogo, 'file' | 'width' | 'alt'>>, firstColumnItems?: Maybe<Array<Maybe<Pick<SiteSiteMetadataFooterFirstColumnItems, 'content' | 'href'>>>>, secondColumnItems?: Maybe<Array<Maybe<Pick<SiteSiteMetadataFooterSecondColumnItems, 'content' | 'href'>>>>, social?: Maybe<Pick<SiteSiteMetadataFooterSocial, 'facebook' | 'twitter' | 'instagram' | 'email'>> }
       )> }> }> };
 
+export type ImportMarkdownQueryVariables = {};
+
+
+export type ImportMarkdownQuery = { allMdx: { nodes: Array<(
+      Pick<Mdx, 'body'>
+      & { fields?: Maybe<Pick<MdxFields, 'slug'>> }
+    )> } };
+
 export type SiteTitleQueryQueryVariables = {};
 
 

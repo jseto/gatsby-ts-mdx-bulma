@@ -1,9 +1,10 @@
 import * as React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import "../styles/style.scss"
 import CookieConsent from 'react-cookie-consent'
 import { CategoryEntries } from "./category-entries"
+import { ImportMarkdown } from "./import-markdown"
 import Navbar from "./navbar"
 import Footer from "./footer"
 
@@ -21,7 +22,7 @@ const Layout = ({ children }) => {
   return (
     <MDXProvider
       components={{
-        CategoryEntries
+        CategoryEntries, ImportMarkdown
       }}
     >
       <Navbar/>
