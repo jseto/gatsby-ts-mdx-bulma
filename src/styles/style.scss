@@ -37,6 +37,12 @@ $menu-item-hover-color: $black !important;
 		text-align: center;
 	}
 
+	.menu-list {
+		.navbar-item {
+			line-height: 1em;
+		}
+	}
+
 	.social {
 		text-align: center;
 		img {
