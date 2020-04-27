@@ -1,0 +1,28 @@
+@import "style";
+
+.footer {
+  padding: 3rem 0rem 0rem;
+
+	.logo {
+		text-align: center;
+	}
+
+	.menu-list {
+		.navbar-item {
+			line-height: $menu-list-line-height;
+		}
+	}
+
+	.social {
+		text-align: center;
+		img {
+			margin: 0.5em;
+			width: 2em;
+		}
+	}
+
+	.made-with-love {
+		text-align: center;
+		color: gray;
+	}
+}

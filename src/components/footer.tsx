@@ -1,15 +1,15 @@
 import * as React from 'react'
+import "../styles/footer.scss"
 import { useStaticQuery, graphql } from 'gatsby'
+import { SiteFooterQuery } from '../../graphql-types'
+import { ShowMenuItems } from './navbar'
 
 import facebookIcon from "../images/social/facebook-square.svg"
 import twitterIcon from "../images/social/twitter-square.svg"
 import instagramIcon from "../images/social/instagram-square.svg"
 import emailIcon from "../images/social/envelope-square.svg"
 
-import { SiteFooterQuery } from '../../graphql-types'
-import { ShowMenuItems } from './navbar'
-
-const Footer = () => {
+export const Footer = () => {
   const { site: { siteMetadata: { footer } } } = useStaticQuery(graphql`
     query SiteFooter {
       site {
@@ -43,7 +43,7 @@ const Footer = () => {
   `) as SiteFooterQuery
 
   return (
-    <footer className="footer">
+    <footer className={`footer ${ footer.className }`}>
       <div className="content logo">
         { footer.logo.file &&
           <img
@@ -105,5 +105,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import "../styles/navbar.scss";
 import { Link, StaticQuery, graphql } from 'gatsby';
 import { SiteMenuQuery } from '../../graphql-types';
 
@@ -41,39 +42,37 @@ export class Navbar extends React.Component<{}, NavbarState> {
 			<StaticQuery
 				render={
 					( { site: { siteMetadata: { navbar } } }: SiteMenuQuery ) => (
-						<div className={ navbar.className }>
-							<nav
-								className="navbar"
-								role="navigation"
-								aria-label="main-navigation"
-							>
-								<div className="container">
-									<div className="navbar-brand">
-										<Link to="/" className="navbar-item" title="Logo">
-											<img src={ navbar.logo.file } alt={ navbar.logo.alt } style={{ width: navbar.logo.width }} />
-										</Link>
-									{/* Hamburger menu */}
-										<div
-											className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-											data-target="navMenu"
-											onClick={() => this.toggleHamburger()}
-										>
-											<span />
-											<span />
-											<span />
-										</div>
-									</div>
+						<nav
+							className={ `navbar ${ navbar.className }` }
+							role="navigation"
+							aria-label="main-navigation"
+						>
+							<div className="container">
+								<div className="navbar-brand">
+									<Link to="/" className="navbar-item" title="Logo">
+										<img src={ navbar.logo.file } alt={ navbar.logo.alt } style={{ width: navbar.logo.width }} />
+									</Link>
+								{/* Hamburger menu */}
 									<div
-										id="navMenu"
-										className={`navbar-menu ${this.state.navBarActiveClass}`}
+										className={`navbar-burger burger ${this.state.navBarActiveClass}`}
+										data-target="navMenu"
+										onClick={() => this.toggleHamburger()}
 									>
-										<div className="navbar-start has-text-centered">
-											<ShowMenuItems items={ navbar.menuItems }/>
-										</div>
+										<span />
+										<span />
+										<span />
 									</div>
 								</div>
-							</nav>
-						</div>
+								<div
+									id="navMenu"
+									className={`navbar-menu ${this.state.navBarActiveClass}`}
+								>
+									<div className="navbar-start has-text-centered">
+										<ShowMenuItems items={ navbar.menuItems }/>
+									</div>
+								</div>
+							</div>
+						</nav>
 					)
 				}
 				query={graphql`
@@ -100,9 +99,6 @@ export class Navbar extends React.Component<{}, NavbarState> {
 		);
 	}
 }
-
-export default Navbar;
-
 
 interface ShowMenuItem {
 	content: string;

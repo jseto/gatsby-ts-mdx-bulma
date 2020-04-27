@@ -11,7 +11,7 @@ module.exports = {
         width: '88px',
         alt: 'Site Logo'
       },
-      className: 'navbar-style',
+      className: 'is-dark',           //bulma class as example                          cSpell: disable-line
       menuItems: [
         { content: 'Home', href: '/' },
         { content: 'Page 2', href: '/page-2' },
@@ -24,7 +24,7 @@ module.exports = {
         width: '5em',
         alt: 'Logo'
       },
-      className: 'footer-style',
+      className: 'has-background-dark',                  //bulma class as example                          cSpell: disable-line
       firstColumnItems: [
         { content: 'Home', href: '/' },
       ],

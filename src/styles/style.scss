@@ -1,69 +1,38 @@
 @charset "utf-8";
-@import "~bulma/sass/utilities/initial-variables";              // cSpell: disable-line
+@import "constants";
 
-$navbar-item-hover-background-color: #aaa;
-$menu-item-color: $white-ter;
-$menu-item-hover-color: $black !important;
+// @import url('https://fonts.googleapis.com/css?family=Roboto:400,200,300,500,700,900&display=swap');
 
 @import "~bulma/bulma.sass";  // cSpell: disable-line
 
-.navbar {
-	@extend .is-dark;
+body {
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
-	@media screen and (max-width: $desktop - 1 ) {
-		.is-active {
-			background-image: linear-gradient(#363636, #585858);
-			
-		}
-		
-		.navbar-burger {
-			background-image: unset;
-		}
+main {
+  margin: 2em;
+}
+
+.content {
+
+  h1 {
+    text-align: center;
+    color: $main-color;
+    font-size: 3.25rem;
+    margin: 0.5em 0 0.425em;
+	}
 	
-		.navbar-item {
-			color: $white-ter;
-			&:hover {
-				color: black;
-			}
-		}
+	h2 {
+    text-align: center;
+    color: $main-color;
+    font-size: 2.5rem;
+    margin-bottom: 1em;
+    margin-top: 2em;
+	}
+
+	h3 {
+    color: $main-color;
+		text-align: center;
 	}
 }
 
-.footer {
-  padding: 3rem 0rem 0rem;
-	background-color: #363636;
-
-	.logo {
-		text-align: center;
-	}
-
-	.menu-list {
-		.navbar-item {
-			line-height: 1em;
-		}
-	}
-
-	.social {
-		text-align: center;
-		img {
-			margin: 0.5em;
-			width: 2em;
-		}
-	}
-
-	.made-with-love {
-		text-align: center;
-		color: white;
-	}
-}
-
-.entry-card {
-	text-align: center;
-	.no-decorators {
-		text-decoration: none;
-		color: unset;
-	}
-	.read-more {
-		@extend .is-pulled-right
-	}
-}
