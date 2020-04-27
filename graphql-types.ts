@@ -698,8 +698,8 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___blockName' |
   'childMdx___frontmatter___order' |
   'childMdx___frontmatter___className' |
-  'childMdx___frontmatter___description' |
   'childMdx___frontmatter___category' |
+  'childMdx___frontmatter___description' |
   'childMdx___body' |
   'childMdx___excerpt' |
   'childMdx___headings' |
@@ -1444,8 +1444,8 @@ export type MdxFieldsEnum =
   'frontmatter___blockName' |
   'frontmatter___order' |
   'frontmatter___className' |
-  'frontmatter___description' |
   'frontmatter___category' |
+  'frontmatter___description' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1577,8 +1577,8 @@ export type MdxFrontmatter = {
   blockName?: Maybe<Scalars['String']>;
   order?: Maybe<Scalars['Int']>;
   className?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
   category?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
 };
 
 export type MdxFrontmatterFilterInput = {
@@ -1587,8 +1587,8 @@ export type MdxFrontmatterFilterInput = {
   blockName?: Maybe<StringQueryOperatorInput>;
   order?: Maybe<IntQueryOperatorInput>;
   className?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
   category?: Maybe<StringQueryOperatorInput>;
+  description?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MdxGroupConnection = {

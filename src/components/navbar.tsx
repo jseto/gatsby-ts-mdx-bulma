@@ -113,7 +113,7 @@ export const ShowMenuItems = ({ items }) => {
 	return (
 		items.map( ( menuItem: ShowMenuItem ) =>
 			menuItem.href.indexOf('http') >= 0
-			? <a className="navbar-item" key={ menuItem.href } href={ menuItem.href }>{ menuItem.content }</a>
+			? <a className="navbar-item" key={ menuItem.href } href={ menuItem.href } target="_blank">{ menuItem.content }</a>
 			: <Link className="navbar-item" key={ menuItem.href } to={ menuItem.href }>{ menuItem.content }</Link>
 		)
 	)
