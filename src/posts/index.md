@@ -5,6 +5,7 @@ className: index-main
 title: Cultiva tu suministro diario de vegetales. 
 description: Cultivo Microgreen en Español. Produce tu suministro diario de vegetales. 
 category: index
+script: ''
 ---
 
 # Main Page
