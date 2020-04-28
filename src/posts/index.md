@@ -1,6 +1,5 @@
 ---
 page: index
-blockName: main
 order: 1
 className: index-main
 title: Cultiva tu suministro diario de vegetales. 

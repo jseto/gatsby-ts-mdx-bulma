@@ -137,8 +137,7 @@ module.exports = {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
       options: {
 				develop: false,
-        whitelist: [],
-        purgeOnly: ['/style.scss'], // applies purging only on the bulma css file                  cSpell: disable-line
+        whitelist: [ 'is-dark', 'has-background-dark' ],
       },
     }, // must be after other CSS plugins
     // this (optional) plugin enables Progressive Web App + Offline functionality

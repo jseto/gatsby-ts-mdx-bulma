@@ -698,8 +698,8 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___blockName' |
   'childMdx___frontmatter___order' |
   'childMdx___frontmatter___className' |
-  'childMdx___frontmatter___category' |
   'childMdx___frontmatter___description' |
+  'childMdx___frontmatter___category' |
   'childMdx___body' |
   'childMdx___excerpt' |
   'childMdx___headings' |
@@ -1444,8 +1444,8 @@ export type MdxFieldsEnum =
   'frontmatter___blockName' |
   'frontmatter___order' |
   'frontmatter___className' |
-  'frontmatter___category' |
   'frontmatter___description' |
+  'frontmatter___category' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1577,8 +1577,8 @@ export type MdxFrontmatter = {
   blockName?: Maybe<Scalars['String']>;
   order?: Maybe<Scalars['Int']>;
   className?: Maybe<Scalars['String']>;
-  category?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
+  category?: Maybe<Scalars['String']>;
 };
 
 export type MdxFrontmatterFilterInput = {
@@ -1587,8 +1587,8 @@ export type MdxFrontmatterFilterInput = {
   blockName?: Maybe<StringQueryOperatorInput>;
   order?: Maybe<IntQueryOperatorInput>;
   className?: Maybe<StringQueryOperatorInput>;
-  category?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
+  category?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MdxGroupConnection = {
@@ -2483,7 +2483,7 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___display' |
   'pluginCreator___pluginOptions___icon' |
   'pluginCreator___pluginOptions___develop' |
-  'pluginCreator___pluginOptions___purgeOnly' |
+  'pluginCreator___pluginOptions___whitelist' |
   'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___nodeAPIs' |
   'pluginCreator___browserAPIs' |
@@ -2684,7 +2684,7 @@ export type SitePluginFieldsEnum =
   'pluginOptions___display' |
   'pluginOptions___icon' |
   'pluginOptions___develop' |
-  'pluginOptions___purgeOnly' |
+  'pluginOptions___whitelist' |
   'pluginOptions___pathCheck' |
   'nodeAPIs' |
   'browserAPIs' |
@@ -2811,7 +2811,7 @@ export type SitePluginPluginOptions = {
   display?: Maybe<Scalars['String']>;
   icon?: Maybe<Scalars['String']>;
   develop?: Maybe<Scalars['Boolean']>;
-  purgeOnly?: Maybe<Array<Maybe<Scalars['String']>>>;
+  whitelist?: Maybe<Array<Maybe<Scalars['String']>>>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
@@ -2829,7 +2829,7 @@ export type SitePluginPluginOptionsFilterInput = {
   display?: Maybe<StringQueryOperatorInput>;
   icon?: Maybe<StringQueryOperatorInput>;
   develop?: Maybe<BooleanQueryOperatorInput>;
-  purgeOnly?: Maybe<StringQueryOperatorInput>;
+  whitelist?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };
 
