@@ -1,5 +1,4 @@
 import * as React from 'react'
-import "../styles/footer.scss"
 import { useStaticQuery, graphql } from 'gatsby'
 import { SiteFooterQuery } from '../../graphql-types'
 import { ShowMenuItems } from './navbar'

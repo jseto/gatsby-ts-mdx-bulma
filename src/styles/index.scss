@@ -1,78 +1,9 @@
-@import "style";
-@import "buttons";
+/* purgecss start ignore */
 
 .index {
 	
-	.index-header {
-		background-color: $main-blue;
-		padding: 3em 10%;
-
-		h1 {
-			color: $soft-blue;
-		}
-
-		h2 {
-			color: $white;
-		}
-		
-		h3 {
-			color: $white;
-			margin-bottom: 2em;
-			font-size: 2em;
-		}
-
-	// @media screen and ( max-width: $tablet - 1px )
-
-		p {
-			font-weight: 100;
-			font-size: 1.5em;
-			color: $light-blue;
-			text-align: center;
-			max-width: 1000px;
-			margin-left: auto;
-			margin-right: auto;
-		
-			&:not(:last-child) {
-				margin-bottom: 1.5em;
-			}
-		}
-
-		p img {
-			width: 200px;
-		}
-
-		a {
-			@extend .round-blue-button;
-		}
-	}
-
-	.readers-benefit {
-		padding: 3em 10%;
-
-
-		.columns {
-			@extend .is-vcentered;
-			max-width: 1000px;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		img {
-			width: 100%;
-			// max-width: 50%;
-		}
-		
-		h3 {
-			text-align: center;
-			color: $soft-blue;
-			font-variant: all-small-caps;
-			font-size: 2em;
-		}
-
-		p {
-			text-align: center;
-			color: gray;
-		}
+	.index-main {
+		h6 { color: inherit }  // dummy
 	}
 
 }

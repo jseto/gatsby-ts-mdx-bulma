@@ -1,5 +1,4 @@
 import * as React from 'react';
-import "../styles/navbar.scss";
 import { Link, StaticQuery, graphql } from 'gatsby';
 import { SiteMenuQuery } from '../../graphql-types';
 

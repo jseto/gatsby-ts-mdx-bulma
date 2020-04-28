@@ -1,5 +1,4 @@
 import * as React from 'react'
-import "../styles/entry-card.scss"
 import { Link, graphql, StaticQuery } from "gatsby"
 import Img from 'gatsby-image'
 import { EntryCardQuery } from "../../graphql-types"
