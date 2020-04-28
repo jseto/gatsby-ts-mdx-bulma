@@ -138,6 +138,7 @@ module.exports = {
       options: {
 				develop: false,
         whitelist: [ 'is-dark', 'has-background-dark' ],
+        content: [require('path').join(process.cwd(), 'src/**/!(*.d).{ts,js,jsx,tsx,md,mdx}')]
       },
     }, // must be after other CSS plugins
     // this (optional) plugin enables Progressive Web App + Offline functionality

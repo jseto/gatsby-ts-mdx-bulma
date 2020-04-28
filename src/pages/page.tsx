@@ -40,3 +40,7 @@ query Page( $id: String ) {
   }
 }
 `
+// do not remove the following comments. It is to avoid css purgin see: https://www.gatsbyjs.org/packages/gatsby-plugin-purgecss/#2-use-a-javascript-comment
+// h3
+// h4
+// h5
