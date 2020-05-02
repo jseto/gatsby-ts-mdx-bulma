@@ -9,6 +9,8 @@ interface CategoryEntriesProps {
 	category: string;
 	readMoreLabel?: string;
 	tags: string; // comma separated
+	noImage: boolean;
+	children?: React.ReactElement;
 }
 
 export const CategoryEntries = ( props: CategoryEntriesProps ) => (
@@ -49,17 +51,32 @@ export const CategoryEntries = ( props: CategoryEntriesProps ) => (
 							items={ nodes }
 							compact={ true }
 							{...props}
-						>
+							>
 							{
-								item => (
-									<EntryCard
-										heading={ item.frontmatter.title }
-										excerpt={ item.frontmatter.description || item.excerpt }
-										imagePath={ item.fields.featuredImage }
-										slug={ item.fields.slug }
-										readMoreLabel={ props.readMoreLabel }
-									/>
-								)
+								item => {
+									const { children, noImage } = props
+									
+									if ( children ) {
+										return React.cloneElement( children, { 
+											heading: item.frontmatter.title,
+											excerpt: item.frontmatter.description || item.excerpt,
+											imagePath: item.fields.featuredImage,
+											slug: item.fields.slug,
+											node: item
+										})
+									}
+									else {
+										return (
+											<EntryCard
+												heading={ item.frontmatter.title }
+												excerpt={ item.frontmatter.description || item.excerpt }
+												imagePath={ !noImage && item.fields.featuredImage }
+												slug={ item.fields.slug }
+												readMoreLabel={ props.readMoreLabel }
+											/>
+										)
+									}
+								}
 							}
 
 						</EntryGrid>

@@ -1,21 +1,26 @@
 import * as React from 'react'
 import { Link, graphql, StaticQuery } from "gatsby"
 import Img from 'gatsby-image'
-import { EntryCardQuery } from "../../graphql-types"
+import { EntryCardQuery, Mdx } from "../../graphql-types"
 
-interface EntryCardProps {
+export interface EntryCardProps {
 	heading: string;
 	excerpt: string;
 	slug: string;
 	imagePath: string;
-	readMoreLabel: string;
+	readMoreLabel?: string;
+	node?: Mdx;
 }
 
 export const EntryCard = ({ heading, excerpt, slug, imagePath, readMoreLabel }: EntryCardProps) => (
 	<StaticQuery
 		render={
 			( data: EntryCardQuery ) => {
-				const image = data.allImageSharp.nodes.find( item => imagePath.includes( item.fluid.originalName ) )
+				
+				const image = imagePath && data.allImageSharp.nodes.find( 
+					item => imagePath.includes( item.fluid.originalName ) 
+				)
+
 				return (
 					<div className="entry-card">
 						<Link className="no-decorators" to={ slug }>
