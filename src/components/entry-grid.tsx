@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import { Mdx, MdxFrontmatter, MdxFields } from '../../graphql-types'
 
 type EntryGridItem = (Pick<Mdx, "id" | "excerpt"> & {
-	frontmatter?: Pick<MdxFrontmatter, "title" | "page" | "description" | "className" | "order" | "blockName" | "category">;
+	frontmatter?: Pick<MdxFrontmatter, "title" | "description" | "className" | "order" | "category">;
 	fields?: Pick<MdxFields, "slug" | "featuredImage">;
 })
 

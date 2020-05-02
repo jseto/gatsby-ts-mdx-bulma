@@ -75,12 +75,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 }
 
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  createTypes(`
+    type Mdx implements Node {
+      frontmatter: MdxFrontmatter
+    }
+
+    type MdxFrontmatter {
+      title: String
+      className: String
+      description: String
+      category: String
+      order: Int
+      date: Date @dateformat
+      tags: [String] 
+    }
+  `)
+}
+
 const findFeaturedImage = ( content ) => {
   const imgTagStart = content.indexOf( '![' )
   
   if ( imgTagStart < 0 ) return ''
 
-  const start = content.indexOf( '(', imgTagStart ) + 1
+  const start = content.indexOf( '](', imgTagStart ) + 2
   const end = content.indexOf( ')', start )
   return path.basename( content.slice( start, end ) )
 }

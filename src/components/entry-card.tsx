@@ -8,27 +8,30 @@ interface EntryCardProps {
 	excerpt: string;
 	slug: string;
 	imagePath: string;
+	readMoreLabel: string;
 }
 
-export const EntryCard = ({ heading, excerpt, slug, imagePath }: EntryCardProps) => (
+export const EntryCard = ({ heading, excerpt, slug, imagePath, readMoreLabel }: EntryCardProps) => (
 	<StaticQuery
 		render={
 			( data: EntryCardQuery ) => {
-				const image = data.allImageSharp.nodes.find( item => imagePath.includes( item.fixed.originalName ) )
+				const image = data.allImageSharp.nodes.find( item => imagePath.includes( item.fluid.originalName ) )
 				return (
 					<div className="entry-card">
 						<Link className="no-decorators" to={ slug }>
 							<h2>{ heading }</h2>
 							<div className="image-container">
 								{ image &&
-									<Img fixed={ image.fixed } />
+									<Img fluid={ image.fluid } />
 								}
 							</div>
 							<p>
 								{ excerpt }
 							</p>
 						</Link>
-						<Link className="read-more" to={ slug }>Leer más...</Link>
+						<Link className="read-more" to={ slug }>
+							{ readMoreLabel || 'Read More→' }
+						</Link>
 					</div>
 				)
 			}
@@ -38,9 +41,9 @@ export const EntryCard = ({ heading, excerpt, slug, imagePath }: EntryCardProps)
 			query EntryCard {
 				allImageSharp {
 					nodes {
-						fixed(width: 150, height: 150 ) {
+						fluid( maxWidth: 800 ) {
 							originalName
-							...GatsbyImageSharpFixed
+							...GatsbyImageSharpFluid
 						}
 					}
 				}

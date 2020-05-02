@@ -12,20 +12,6 @@ interface PageProps {
 
 class Page extends React.Component<PageProps> {
 
-  componentDidMount() {
-    const { data: { mdx } } = this.props
-
-    if ( mdx.frontmatter.script ) {
-      const bodyElement = document.getElementsByTagName( 'body' )[0];
-      const scriptElement = document.createElement( 'script' )
-
-      scriptElement.type = 'text/javascript'
-      scriptElement.src = mdx.frontmatter.script
-
-      bodyElement.append( scriptElement )
-    }
-  }
-
   render() {
     const { data: { mdx } } = this.props
 
@@ -57,7 +43,6 @@ query Page( $id: String ) {
 			title
       description
       className
-      script
     }
   }
 }
@@ -67,3 +52,6 @@ query Page( $id: String ) {
 // h3
 // h4
 // h5
+// blockquote
+// pre
+// code
