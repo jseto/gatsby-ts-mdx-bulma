@@ -13,7 +13,9 @@ export const MarkdownBlock: React.FC<MarkdownBlockProps> = ({
 
 	return (
 		<div className={`markdown-block ${ className? className : '' }`}>
-		  <MDXRenderer>{ children }</MDXRenderer>
+			<div className="content">
+			  <MDXRenderer>{ children }</MDXRenderer>
+			</div>
 		</div>
 	);
 };

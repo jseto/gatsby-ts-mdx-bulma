@@ -1,7 +1,9 @@
 .index {
 	
 	.index-main {
-		h6 { color: inherit }  // dummy
+		.content {
+			@extend %inner-content;
+		}
 	}
 
 }
