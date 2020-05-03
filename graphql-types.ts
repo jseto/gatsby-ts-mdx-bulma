@@ -3030,7 +3030,7 @@ export type CategoryEntriesQueryVariables = {};
 
 
 export type CategoryEntriesQuery = { allMdx: { nodes: Array<(
-      Pick<Mdx, 'id' | 'excerpt'>
+      Pick<Mdx, 'id' | 'excerpt' | 'tableOfContents'>
       & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'description' | 'className' | 'order' | 'category' | 'tags'>>, fields?: Maybe<Pick<MdxFields, 'slug' | 'featuredImage'>> }
     )> } };
 

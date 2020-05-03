@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { ReactNode } from 'react'
-import { Mdx, MdxFrontmatter, MdxFields } from '../../graphql-types'
+import { Mdx, MdxFrontmatter, MdxFields, Maybe, Scalars } from '../../graphql-types'
 
-type EntryGridItem = (Pick<Mdx, "id" | "excerpt"> & {
+export type EntryGridItem = (Pick<Mdx, "id" | "excerpt"> & {
 	frontmatter?: Pick<MdxFrontmatter, "title" | "description" | "className" | "order" | "category">;
 	fields?: Pick<MdxFields, "slug" | "featuredImage">;
+	tableOfContents?: Maybe<Scalars['JSON']>;
 })
 
 export interface EntryGridProps {

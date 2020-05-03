@@ -1,16 +1,15 @@
 import * as React from 'react'
 import { StaticQuery, graphql } from 'gatsby';
-import { EntryGrid } from '../components/entry-grid';
+import { EntryGrid, EntryGridItem } from '../components/entry-grid';
 import { CategoryEntriesQuery } from '../../graphql-types';
 import { EntryCard } from '../components/entry-card';
 
-interface CategoryEntriesProps {
+export interface CategoryEntriesProps {
 	className?: string;
 	category: string;
 	readMoreLabel?: string;
 	tags: string; // comma separated
-	noImage: boolean;
-	children?: React.ReactElement;
+	children?: ( item: EntryGridItem ) => React.ReactElement;
 }
 
 export const CategoryEntries = ( props: CategoryEntriesProps ) => (
@@ -29,6 +28,7 @@ export const CategoryEntries = ( props: CategoryEntriesProps ) => (
 						}
 						id
 						excerpt
+						tableOfContents
 						fields {
 							slug
 							featuredImage
@@ -54,23 +54,19 @@ export const CategoryEntries = ( props: CategoryEntriesProps ) => (
 							>
 							{
 								item => {
-									const { children, noImage } = props
+									const { children } = props
 									
 									if ( children ) {
-										return React.cloneElement( children, { 
-											heading: item.frontmatter.title,
-											excerpt: item.frontmatter.description || item.excerpt,
-											imagePath: item.fields.featuredImage,
-											slug: item.fields.slug,
-											node: item
-										})
+										return(
+											children( item )
+										)
 									}
 									else {
 										return (
 											<EntryCard
 												heading={ item.frontmatter.title }
 												excerpt={ item.frontmatter.description || item.excerpt }
-												imagePath={ !noImage && item.fields.featuredImage }
+												imagePath={ item.fields.featuredImage }
 												slug={ item.fields.slug }
 												readMoreLabel={ props.readMoreLabel }
 											/>

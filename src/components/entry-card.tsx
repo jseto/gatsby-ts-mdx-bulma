@@ -4,11 +4,11 @@ import Img from 'gatsby-image'
 import { EntryCardQuery, Mdx } from "../../graphql-types"
 
 export interface EntryCardProps {
-	heading: string;
-	excerpt: string;
+	heading: string | JSX.Element;
+	excerpt: string | JSX.Element;
 	slug: string;
 	imagePath: string;
-	readMoreLabel?: string;
+	readMoreLabel?: string | JSX.Element;
 	node?: Mdx;
 }
 
