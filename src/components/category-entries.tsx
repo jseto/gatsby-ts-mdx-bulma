@@ -3,12 +3,15 @@ import { StaticQuery, graphql } from 'gatsby';
 import { EntryGrid, EntryGridItem } from '../components/entry-grid';
 import { CategoryEntriesQuery } from '../../graphql-types';
 import { EntryCard } from '../components/entry-card';
+import { MarkdownBlock } from './markdown-block';
 
 export interface CategoryEntriesProps {
 	className?: string;
 	category: string;
 	readMoreLabel?: string;
-	tags: string; // comma separated
+	tags?: string; // comma separated
+	asMarkdown?: boolean;
+	spareGrid?: boolean;
 	children?: ( item: EntryGridItem ) => React.ReactElement;
 }
 
@@ -16,7 +19,7 @@ export const CategoryEntries = ( props: CategoryEntriesProps ) => (
 	<StaticQuery
 		query={graphql`
 			query CategoryEntries {
-				allMdx(sort: {fields: frontmatter___order, order: DESC}) {
+				allMdx(sort: {fields: frontmatter___order, order: ASC}) {
 					nodes {
 						frontmatter {
 							title
@@ -29,6 +32,7 @@ export const CategoryEntries = ( props: CategoryEntriesProps ) => (
 						id
 						excerpt
 						tableOfContents
+						body
 						fields {
 							slug
 							featuredImage
@@ -49,19 +53,26 @@ export const CategoryEntries = ( props: CategoryEntriesProps ) => (
 					<>
 						<EntryGrid
 							items={ nodes }
-							compact={ true }
+							compact={ !props.spareGrid }
 							{...props}
 							>
 							{
 								item => {
-									const { children } = props
+									const { children, asMarkdown } = props
 									
 									if ( children ) {
 										return(
 											children( item )
 										)
 									}
-									else {
+									else if ( asMarkdown ) {
+										return(
+											<MarkdownBlock className={ item.frontmatter.className }>
+												{ item.body }
+											</MarkdownBlock>
+										)
+									}
+									else{
 										return (
 											<EntryCard
 												heading={ item.frontmatter.title }

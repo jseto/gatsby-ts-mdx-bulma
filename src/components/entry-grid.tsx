@@ -2,7 +2,7 @@ import * as React from 'react'
 import { ReactNode } from 'react'
 import { Mdx, MdxFrontmatter, MdxFields, Maybe, Scalars } from '../../graphql-types'
 
-export type EntryGridItem = (Pick<Mdx, "id" | "excerpt"> & {
+export type EntryGridItem = (Pick<Mdx, "id" | "excerpt" | "body"> & {
 	frontmatter?: Pick<MdxFrontmatter, "title" | "description" | "className" | "order" | "category">;
 	fields?: Pick<MdxFields, "slug" | "featuredImage">;
 	tableOfContents?: Maybe<Scalars['JSON']>;
@@ -36,7 +36,7 @@ export class EntryGrid extends React.Component<EntryGridProps> {
 		const { items, children } = this.props
 
 		return items.map( item => (
-      <div key={ item.id } className="column is-one-third">
+      <div key={ item.id } className="column">
 				{ children( item ) }
       </div>
     ))

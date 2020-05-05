@@ -701,8 +701,8 @@ export type FileFieldsEnum =
   'childMdx___frontmatter___date' |
   'childMdx___frontmatter___tags' |
   'childMdx___frontmatter___page' |
-  'childMdx___frontmatter___script' |
   'childMdx___frontmatter___blockName' |
+  'childMdx___frontmatter___script' |
   'childMdx___body' |
   'childMdx___excerpt' |
   'childMdx___headings' |
@@ -1450,8 +1450,8 @@ export type MdxFieldsEnum =
   'frontmatter___date' |
   'frontmatter___tags' |
   'frontmatter___page' |
-  'frontmatter___script' |
   'frontmatter___blockName' |
+  'frontmatter___script' |
   'body' |
   'excerpt' |
   'headings' |
@@ -1586,8 +1586,8 @@ export type MdxFrontmatter = {
   date?: Maybe<Scalars['Date']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   page?: Maybe<Scalars['String']>;
-  script?: Maybe<Scalars['String']>;
   blockName?: Maybe<Scalars['String']>;
+  script?: Maybe<Scalars['String']>;
 };
 
 
@@ -1607,8 +1607,8 @@ export type MdxFrontmatterFilterInput = {
   date?: Maybe<DateQueryOperatorInput>;
   tags?: Maybe<StringQueryOperatorInput>;
   page?: Maybe<StringQueryOperatorInput>;
-  script?: Maybe<StringQueryOperatorInput>;
   blockName?: Maybe<StringQueryOperatorInput>;
+  script?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MdxGroupConnection = {
@@ -3030,7 +3030,7 @@ export type CategoryEntriesQueryVariables = {};
 
 
 export type CategoryEntriesQuery = { allMdx: { nodes: Array<(
-      Pick<Mdx, 'id' | 'excerpt' | 'tableOfContents'>
+      Pick<Mdx, 'id' | 'excerpt' | 'tableOfContents' | 'body'>
       & { frontmatter?: Maybe<Pick<MdxFrontmatter, 'title' | 'description' | 'className' | 'order' | 'category' | 'tags'>>, fields?: Maybe<Pick<MdxFields, 'slug' | 'featuredImage'>> }
     )> } };
 
