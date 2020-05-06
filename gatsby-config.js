@@ -123,12 +123,22 @@ module.exports = {
         },
       },
     },
-		`gatsby-plugin-advanced-sitemap`,
+    {
+      resolve: `gatsby-plugin-advanced-sitemap`,
+      options: {
+        exclude: [
+          `/dev-404-page`,
+          `/404`,
+          `/404.html`,
+          // /(\/)?hash-\S*/, // you can also pass valid RegExp to exclude internal tags for example
+        ],
+      }
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Mobile App Name`,
+        short_name: `App`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
