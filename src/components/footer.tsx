@@ -3,10 +3,10 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { SiteFooterQuery } from '../../graphql-types'
 import { ShowMenuItems } from './navbar'
 
-import facebookIcon from "../images/social/facebook-square.svg"
-import twitterIcon from "../images/social/twitter-square.svg"
-import instagramIcon from "../images/social/instagram-square.svg"
-import emailIcon from "../images/social/envelope-square.svg"
+import FacebookIcon from "@fortawesome/fontawesome-free/svgs/brands/facebook-square.svg"
+import TwitterIcon from "@fortawesome/fontawesome-free/svgs/brands/twitter-square.svg"
+import InstagramIcon from "@fortawesome/fontawesome-free/svgs/brands/instagram-square.svg"
+import EmailIcon from "@fortawesome/fontawesome-free/svgs/solid/envelope-square.svg"
 
 export const Footer = () => {
   const { site: { siteMetadata: { footer } } } = useStaticQuery(graphql`
@@ -74,22 +74,22 @@ export const Footer = () => {
               <div className="column is-4 social">
                 { footer.social.facebook &&
                   <a title="facebook" href={ footer.social.facebook } target="_blank">
-                    <img src={ facebookIcon } width="1em" /> 
+                    <FacebookIcon/>
                   </a>
                 }
                 { footer.social.twitter &&
                   <a title="twitter" href={ footer.social.twitter } target="_blank">
-                    <img src={ twitterIcon } width="1em" />
+                    <TwitterIcon/>
                   </a>
                 }
                 { footer.social.instagram &&
                   <a title="instagram" href={ footer.social.instagram } target="_blank">
-                    <img src={ instagramIcon } width="1em"/>
+                    <InstagramIcon/>
                   </a>
                 }
                 { footer.social.email &&
                   <a title="instagram" href={ footer.social.email } target="_blank">
-                    <img src={ emailIcon } width="1em"/>
+                    <EmailIcon/>
                   </a>
                 }
               </div>

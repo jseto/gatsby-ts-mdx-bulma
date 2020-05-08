@@ -9,6 +9,7 @@ import { MDXProvider } from "@mdx-js/react"
 import { CategoryEntries } from "../components/category-entries"
 import { ImportMarkdown } from "../components/import-markdown"
 import { Columns } from "../components/columns"
+import { Location } from "@reach/router"
 
 interface PageProps {
   data: PageQuery
@@ -28,7 +29,7 @@ class Page extends React.Component<PageProps> {
 
           <MDXProvider
             components={{
-              CategoryEntries, ImportMarkdown, Columns
+              CategoryEntries, ImportMarkdown, Columns, Location
             }}
           >
 
@@ -67,3 +68,5 @@ query Page( $id: String ) {
 // blockquote
 // pre
 // code
+// hr
+// svg
