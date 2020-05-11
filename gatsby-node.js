@@ -99,6 +99,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       order: Int
       date: Date @dateformat
       tags: [String] 
+      featuredImage: File
     }
   `)
 }

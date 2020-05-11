@@ -1,5 +1,4 @@
 import * as React from "react"
-
 import { Layout } from "../components/layout"
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
@@ -17,13 +16,18 @@ interface PageProps {
 class Page extends React.Component<PageProps> {
 
   render() {
-    const { data: { mdx } } = this.props
+    const { data: { mdx, allFile } } = this.props
+    const featuredImageFile = () => allFile.nodes.find( 
+      file => file.publicURL.includes( mdx.fields.featuredImage )
+    )
+    const featuredImage = mdx.frontmatter.featuredImage?.publicURL || featuredImageFile()?.publicURL
 
     return(
       <Layout>
         <SEO 
           title={ mdx.frontmatter.title } 
           description={ mdx.frontmatter.description || mdx.excerpt }
+          featuredImage={ featuredImage }
         />
 
           <MDXProvider
@@ -32,7 +36,11 @@ class Page extends React.Component<PageProps> {
             }}
           >
 
-          <MarkdownBlock className={ mdx.frontmatter.className }>
+          <MarkdownBlock 
+            className={ mdx.frontmatter.className } 
+            frontmatter={ mdx.frontmatter }  // Use from MDX file as {props.frontmatter}
+            featuredImage={ featuredImage }
+          >
             { mdx.body }
           </MarkdownBlock>
 
@@ -51,10 +59,21 @@ query Page( $id: String ) {
     id
     body
     excerpt
+    fields {
+      featuredImage 
+    }
     frontmatter {
 			title
       description
       className
+      featuredImage {
+        publicURL
+      }
+    }
+  }
+  allFile(filter: {internal: {mediaType: {glob: "image/*"}}}) {
+    nodes {
+      publicURL
     }
   }
 }

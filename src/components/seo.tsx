@@ -31,6 +31,7 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, featuredImage
   ) as SiteQuery
 
   const metaDescription = description || site.siteMetadata.description
+  const siteUrl = site.siteMetadata.siteUrl
 
   return (
     <Helmet
@@ -54,11 +55,11 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, featuredImage
         },
         {
           property: `og:images`,
-          content: featuredImage && `${ site.siteMetadata.siteUrl || '' }${ featuredImage }`,
+          content: featuredImage && `${ siteUrl || '' }${ featuredImage }`,
         },
         {
           property: `og:image`,
-          content: featuredImage && `${ site.siteMetadata.siteUrl || '' }${ featuredImage }`,
+          content: featuredImage && `${ siteUrl || '' }${ featuredImage }`,
         },
         {
           property: `og:type`,
@@ -82,7 +83,7 @@ const SEO: React.FC<SEOProps> = ({ description, lang, meta, title, featuredImage
         },
         {
           name: `twitter:image`,
-          content: featuredImage && `${ site.siteMetadata.siteUrl || '' }${ featuredImage }`,
+          content: featuredImage && `${ siteUrl || '' }${ featuredImage }`,
         },
       ].concat(meta)}
     />
