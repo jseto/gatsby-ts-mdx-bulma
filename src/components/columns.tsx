@@ -1,6 +1,18 @@
 import * as React from 'react'
 
-export const Columns = ({ children, verticalCenter, align }) => {
+interface ColumnsProps {
+	verticalCenter?: boolean;
+	align?: 'left' | 'right' | 'center';
+	colSizes?: string[];
+	children: React.ReactChildren;
+}
+
+export const Columns = ({ 
+	children, 
+	verticalCenter, 
+	align, 
+	colSizes }: ColumnsProps
+) => {
 
 	return (
 		<div 
@@ -8,8 +20,10 @@ export const Columns = ({ children, verticalCenter, align }) => {
 			style={{ textAlign: align? align : 'left' }}
 		>
 			{
-				React.Children.map( children, child => (
-					<div className="column">
+				React.Children.map( children, ( child, idx ) => (
+					<div className={
+						`column ${ (colSizes && colSizes[ idx])? colSizes[ idx]:'' }`
+					}>
 						{ child }
 					</div>
 				))
