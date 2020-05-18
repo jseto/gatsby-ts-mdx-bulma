@@ -73,22 +73,22 @@ export const Footer = () => {
               </div>
               <div className="column is-4 social">
                 { footer.social.facebook &&
-                  <a title="facebook" href={ footer.social.facebook } target="_blank">
+                  <a title="Follow us on Facebook" href={ footer.social.facebook } target="_blank">
                     <FacebookIcon/>
                   </a>
                 }
                 { footer.social.twitter &&
-                  <a title="twitter" href={ footer.social.twitter } target="_blank">
+                  <a title="Follow us on Twitter" href={ footer.social.twitter } target="_blank">
                     <TwitterIcon/>
                   </a>
                 }
                 { footer.social.instagram &&
-                  <a title="instagram" href={ footer.social.instagram } target="_blank">
+                  <a title="Follow us on Instagram" href={ footer.social.instagram } target="_blank">
                     <InstagramIcon/>
                   </a>
                 }
                 { footer.social.email &&
-                  <a title="instagram" href={ footer.social.email } target="_blank">
+                  <a title="Contact us" href={ footer.social.email }>
                     <EmailIcon/>
                   </a>
                 }

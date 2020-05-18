@@ -3,7 +3,12 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { ImportMarkdownQuery } from '../../graphql-types';
 import { MarkdownBlock } from './markdown-block';
 
-export const ImportMarkdown = ({ className, slug })=> {
+interface ImportMarkdownProps {
+	className?: string;
+	slug: string;
+}
+
+export const ImportMarkdown = ({ className, slug }: ImportMarkdownProps)=> {
 
 	const files: ImportMarkdownQuery = useStaticQuery(graphql`
 		query ImportMarkdown {
