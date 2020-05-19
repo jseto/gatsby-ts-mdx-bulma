@@ -1,16 +1,15 @@
 import * as React from "react"
 
 export interface ScriptLoaderProps {
-	script: string;
 	initScript?: ()=>void;
-	children?: React.ReactElement;
+	children: React.ReactElement< {}, 'script' >;
 }
 
 export class ScriptLoader extends React.Component< ScriptLoaderProps > {
 	componentDidMount() {
-    const { script, initScript } = this.props
+    const { children, initScript } = this.props
 
-		const id = "id-" + script
+		const id = "id-" + children.props.src
 		if ( document.getElementById( id ) ) {
 			if ( initScript ) initScript()
 			return
@@ -18,8 +17,10 @@ export class ScriptLoader extends React.Component< ScriptLoaderProps > {
 		const bodyElement = document.getElementsByTagName( 'body' )[0];
 		const scriptElement = document.createElement( 'script' )
 
-		scriptElement.type = 'text/javascript'
-		scriptElement.src = script
+		Object.keys( children.props ).forEach( 
+			key => scriptElement.setAttribute( key, children.props[key] )
+		)
+
 		scriptElement.id = id;
 
 		// if ( window ) {
@@ -29,8 +30,6 @@ export class ScriptLoader extends React.Component< ScriptLoaderProps > {
 	}
 
 	render() {
-		const { children } = this.props
-
-		return ( <>{children}</> )
+		return ( <></> )
 	}
 }
