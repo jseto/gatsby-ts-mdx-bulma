@@ -23,17 +23,23 @@ export const EntryCard = ({ heading, excerpt, slug, imagePath, readMoreLabel }: 
 
 				return (
 					<div className="entry-card">
+						<h2>
+							{ typeof heading === 'string'
+									? <Link className="no-decorators" to={ slug }>{ heading }</Link>
+									: heading 
+							}
+						</h2>
 						<Link className="no-decorators" to={ slug }>
-							<h2>{ heading }</h2>
 							<div className="image-container">
 								{ image &&
 									<Img fluid={ image.fluid } />
 								}
 							</div>
-							<p>
-								{ excerpt }
-							</p>
 						</Link>
+						{ typeof excerpt === 'string'
+								? <Link className="no-decorators" to={ slug }><p>{ excerpt }</p></Link>
+								: excerpt
+						}
 						<Link className="read-more" to={ slug }>
 							{ readMoreLabel || 'Read More→' }
 						</Link>
