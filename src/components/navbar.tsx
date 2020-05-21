@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
-import { SiteMenuQuery } from '../../graphql-types';
+import { SiteMenuQuery, SiteSiteMetadataNavbarMenuItems } from '../../graphql-types';
+import { Fragment } from 'react';
 
 interface NavbarState {
 	active: boolean;
@@ -104,18 +105,40 @@ interface ShowMenuItem {
 	href?: string;
 }
 
-export const ShowMenuItems = ({ items }) => {
+export const ShowMenuItems = ({ items, asListItem=false }) => {
+	const itemElement = ( menuItem: ShowMenuItem ) => (
+		<>
+			{	menuItem.href && (
+					menuItem.href.indexOf('http') >= 0
+					? <a className="navbar-item" href={ menuItem.href } target="_blank">
+							{ menuItem.content }
+						</a>
+					: <Link className="navbar-item" to={ menuItem.href }>
+							{ menuItem.content }
+						</Link>
+				)
+			}
+			{ !menuItem.href &&
+				<p className="navbar-item"></p>
+			}
+		</>
+	)
+
 	return (
 		items.map( ( menuItem: ShowMenuItem, i: number ) => {
-			if ( menuItem.href ) {
+			if ( asListItem ) {
 				return(
-					menuItem.href.indexOf('http') >= 0
-					? <a className="navbar-item" key={ menuItem.href } href={ menuItem.href } target="_blank">{ menuItem.content }</a>
-					: <Link className="navbar-item" key={ menuItem.href } to={ menuItem.href }>{ menuItem.content }</Link>
+					<li  key={ menuItem.href || i }>
+						{ itemElement( menuItem ) }
+					</li>
 				)
 			}
 			else {
-				return <p className="navbar-item" key={ i }></p>
+				return (
+					<Fragment key={ menuItem.href || i }>
+						{ itemElement( menuItem ) }				
+					</Fragment>
+				)
 			}
 		})
 	)

@@ -44,7 +44,7 @@ export const Footer = () => {
   return (
     <footer className={`footer ${ footer.className }`}>
       <div className="container">
-        <div className="content logo">
+        <div className="logo">
           { footer.logo.file &&
             <img
               src={ footer.logo.file }
@@ -53,54 +53,48 @@ export const Footer = () => {
             />
           }
         </div>
-        <div className="content">
-            <div className="columns" style={{
-              marginLeft: 0, marginRight: 0
-            }}>
-              <div className="column is-4">
-                <section className="menu">
-                  <ul className="menu-list">
-                    <ShowMenuItems items={ footer.firstColumnItems } />
-                  </ul>
-                </section>
-              </div>
-              <div className="column is-4">
-                <section>
-                  <ul className="menu-list">
-                    <ShowMenuItems items={ footer.secondColumnItems } />
-                  </ul>
-                </section>
-              </div>
-              <div className="column is-4 social">
-                { footer.social.facebook &&
-                  <a title="Follow us on Facebook" href={ footer.social.facebook } target="_blank">
-                    <FacebookIcon/>
-                  </a>
-                }
-                { footer.social.twitter &&
-                  <a title="Follow us on Twitter" href={ footer.social.twitter } target="_blank">
-                    <TwitterIcon/>
-                  </a>
-                }
-                { footer.social.instagram &&
-                  <a title="Follow us on Instagram" href={ footer.social.instagram } target="_blank">
-                    <InstagramIcon/>
-                  </a>
-                }
-                { footer.social.email &&
-                  <a title="Contact us" href={ footer.social.email }>
-                    <EmailIcon/>
-                  </a>
-                }
-              </div>
+        <div className="columns" style={{
+            marginLeft: 0, marginRight: 0
+          }}>
+            <div className="column is-4 menu">
+              <ul className="menu-list">
+                <ShowMenuItems items={ footer.firstColumnItems } asListItem={true}/>
+              </ul>
             </div>
-            <div className="column made-with-love">
-              { footer.madeWithLove &&
-                <small>
-                  { footer.madeWithLove }
-                </small>
+            <div className="column is-4 menu">
+              <ul className="menu-list">
+                <ShowMenuItems items={ footer.secondColumnItems } asListItem={true}/>
+              </ul>
+            </div>
+            <div className="column is-4 social">
+              { footer.social.facebook &&
+                <a title="Follow us on Facebook" href={ footer.social.facebook } target="_blank">
+                  <FacebookIcon/>
+                </a>
+              }
+              { footer.social.twitter &&
+                <a title="Follow us on Twitter" href={ footer.social.twitter } target="_blank">
+                  <TwitterIcon/>
+                </a>
+              }
+              { footer.social.instagram &&
+                <a title="Follow us on Instagram" href={ footer.social.instagram } target="_blank">
+                  <InstagramIcon/>
+                </a>
+              }
+              { footer.social.email &&
+                <a title="Contact us" href={ footer.social.email }>
+                  <EmailIcon/>
+                </a>
               }
             </div>
+          </div>
+        <div className="made-with-love">
+            { footer.madeWithLove &&
+              <small>
+                { footer.madeWithLove }
+              </small>
+            }
           </div>
       </div>
     </footer>
