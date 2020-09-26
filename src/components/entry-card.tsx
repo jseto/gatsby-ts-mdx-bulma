@@ -54,7 +54,11 @@ export const EntryCard = ({ heading, excerpt, slug, imagePath, readMoreLabel }: 
 					nodes {
 						fluid( maxWidth: 800 ) {
 							originalName
-							...GatsbyImageSharpFluid
+							base64
+							aspectRatio
+							src
+							srcSet
+							sizes
 						}
 					}
 				}

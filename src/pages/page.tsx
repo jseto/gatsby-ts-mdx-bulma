@@ -38,7 +38,7 @@ class Page extends React.Component<PageProps> {
 
           <MarkdownBlock 
             className={ mdx.frontmatter.className } 
-            frontmatter={ mdx.frontmatter }  // Use from MDX file as {props.frontmatter}
+            frontmatter={ mdx.frontmatter as any }  // Use from MDX file as {props.frontmatter}
             featuredImage={ featuredImage }
           >
             { mdx.body }
