@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 interface ColumnsProps {
+	className: string;
 	verticalCenter?: boolean;
 	align?: 'left' | 'right' | 'center';
 	colSizes?: string[];
@@ -8,6 +9,7 @@ interface ColumnsProps {
 }
 
 export const Columns = ({ 
+	className,
 	children, 
 	verticalCenter, 
 	align, 
@@ -16,7 +18,7 @@ export const Columns = ({
 
 	return (
 		<div 
-			className={ `columns is-multiline ${ verticalCenter && 'is-vcentered' }` }
+			className={ `columns is-multiline ${ verticalCenter && 'is-vcentered' } ${ className }` }
 			style={{ textAlign: align? align : 'left' }}
 		>
 			{

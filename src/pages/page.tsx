@@ -8,6 +8,7 @@ import { MDXProvider } from "@mdx-js/react"
 import { CategoryEntries } from "../components/category-entries"
 import { ImportMarkdown } from "../components/import-markdown"
 import { Columns } from "../components/columns"
+import { Testimonial } from '../components/testimonial'
 
 interface PageProps {
   data: PageQuery
@@ -32,7 +33,7 @@ class Page extends React.Component<PageProps> {
 
           <MDXProvider
             components={{
-              CategoryEntries, ImportMarkdown, Columns
+              CategoryEntries, ImportMarkdown, Columns, Testimonial
             }}
           >
 

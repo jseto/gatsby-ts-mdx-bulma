@@ -5,6 +5,10 @@
 
 @import "~bulma/bulma.sass";  // cSpell: disable-line
 
+html {
+  min-width: unset;
+}
+
 body {
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -13,6 +17,9 @@ body {
 
 main {
   margin: 2em;
+  @media screen and ( max-width: $tablet - 1px ) {
+    margin: 2em 0;
+  }
 }
 
 .content {
@@ -36,7 +43,7 @@ main {
     color: $main-color;
 		text-align: center;
 	}
-  
+
   @media screen and ( max-width: $tablet - 1px ) {
 		h1 {
 			font-size: 2.5rem;
@@ -56,6 +63,7 @@ main {
 		}
 		
 	}
+
 }
 
 .error {
@@ -111,4 +119,3 @@ main {
   margin-left: auto;
   margin-right: auto;
 }
-
