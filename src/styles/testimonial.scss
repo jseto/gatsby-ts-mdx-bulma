@@ -12,17 +12,7 @@ $photo-width: 6em;
 			margin: 0;
 		}
 
-		.gatsby-resp-image-wrapper {
-
-			.gatsby-resp-image-background-image {
-				border-radius: 50%;
-			}
-
-			img {
-				border-radius: 50%;
-				box-shadow: unset !important;
-			}
-		}
+		@include gatsby-image( 50% )
 
 	}
 

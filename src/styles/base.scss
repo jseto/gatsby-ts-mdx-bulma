@@ -119,3 +119,17 @@ main {
   margin-left: auto;
   margin-right: auto;
 }
+
+@mixin gatsby-image( $border-radius ) {
+  .gatsby-resp-image-wrapper {
+
+    .gatsby-resp-image-background-image {
+      border-radius: $border-radius;
+    }
+
+    img {
+      border-radius: $border-radius;
+      box-shadow: unset !important;
+    }
+  }
+}

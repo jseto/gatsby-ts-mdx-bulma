@@ -1,11 +1,11 @@
 import * as React from 'react'
 
 interface ColumnsProps {
-	className: string;
+	className?: string;
 	verticalCenter?: boolean;
 	align?: 'left' | 'right' | 'center';
-	colSizes?: string[];
-	children: React.ReactChildren;
+	columnWidths?: string | string[];
+	children: React.ReactNode;
 }
 
 export const Columns = ({ 
@@ -13,8 +13,11 @@ export const Columns = ({
 	children, 
 	verticalCenter, 
 	align, 
-	colSizes }: ColumnsProps
+	columnWidths }: ColumnsProps
 ) => {
+	const colWidths = typeof columnWidths == 'string'
+		? new Array(5).fill( columnWidths ) 
+		: columnWidths || new Array(5).fill( 'is-half' )
 
 	return (
 		<div 
@@ -24,7 +27,7 @@ export const Columns = ({
 			{
 				React.Children.map( children, ( child, idx ) => (
 					<div className={
-						`column ${ (colSizes && colSizes[ idx])? colSizes[ idx]:'' }`
+						`column ${ (colWidths && colWidths[ idx])? colWidths[ idx]:'' }`
 					}>
 						{ child }
 					</div>

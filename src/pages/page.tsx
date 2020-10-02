@@ -3,15 +3,37 @@ import { Layout } from "../components/layout"
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
 import { MarkdownBlock } from "../components/markdown-block"
-import { PageQuery } from "../../graphql-types"
 import { MDXProvider } from "@mdx-js/react"
 import { CategoryEntries } from "../components/category-entries"
 import { ImportMarkdown } from "../components/import-markdown"
 import { Columns } from "../components/columns"
 import { Testimonial } from '../components/testimonial'
+import { ImageCard, ImageCardContainer } from '../components/image-card'
 
 interface PageProps {
-  data: PageQuery
+  data: {
+    mdx: {
+      id: string;
+      body: string;
+      excerpt: string;
+      fields: {
+        featuredImage: string
+      }
+      frontmatter: {
+        title: string;
+        description: string;
+        className: string;
+        featuredImage: {
+          publicURL: string
+        }
+      }
+    }
+    allFile: {
+      nodes: [{
+        publicURL: string
+      }]
+    }
+  }
 }
 
 class Page extends React.Component<PageProps> {
@@ -33,7 +55,8 @@ class Page extends React.Component<PageProps> {
 
           <MDXProvider
             components={{
-              CategoryEntries, ImportMarkdown, Columns, Testimonial
+              CategoryEntries, ImportMarkdown, Columns, Testimonial,
+              ImageCard, ImageCardContainer
             }}
           >
 
