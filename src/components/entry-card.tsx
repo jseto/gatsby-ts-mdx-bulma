@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link, graphql, StaticQuery } from "gatsby"
-import Img from 'gatsby-image'
 import { EntryCardQuery, Mdx } from "../../graphql-types"
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 export interface EntryCardProps {
 	heading: string | JSX.Element;
@@ -18,7 +18,7 @@ export const EntryCard = ({ heading, excerpt, slug, imagePath, readMoreLabel }: 
 			( data: EntryCardQuery ) => {
 				
 				const image = imagePath && data.allImageSharp.nodes.find( 
-					item => imagePath.includes( item.fluid.originalName ) 
+					item => item.original.src.includes( imagePath.slice(0, imagePath.lastIndexOf('.')) ) 
 				)
 
 				return (
@@ -32,7 +32,7 @@ export const EntryCard = ({ heading, excerpt, slug, imagePath, readMoreLabel }: 
 						<Link className="no-decorators" to={ slug }>
 							<div className="image-container">
 								{ image &&
-									<Img fluid={ image.fluid } />
+									<GatsbyImage image={ image.gatsbyImageData } alt={''}/>
 								}
 							</div>
 						</Link>
@@ -52,13 +52,9 @@ export const EntryCard = ({ heading, excerpt, slug, imagePath, readMoreLabel }: 
 			query EntryCard {
 				allImageSharp {
 					nodes {
-						fluid( maxWidth: 800 ) {
-							originalName
-							base64
-							aspectRatio
+						gatsbyImageData
+						original {
 							src
-							srcSet
-							sizes
 						}
 					}
 				}

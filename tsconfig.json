@@ -13,6 +13,7 @@
     "lib": [
       "dom"
     ],
+    "allowJs": true,
 		"experimentalDecorators": true
   }
 }
